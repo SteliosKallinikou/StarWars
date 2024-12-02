@@ -1,15 +1,15 @@
 <div class="wrapper">
-  <span>Name: {{details?.name| json}}</span>
-  <span>Created: {{details?.created| json}}</span>
-  <span>Edited: {{details?.edited| json}}</span>
-  <span>Birth Year: {{details?.birth_year| json}}</span>
-  <span>Eye Color: {{details?.eye_color| json}}</span>
-  <span>Hair Color: {{details?.hair_color| json}}</span>
-  <span>Skin Color: {{details?.skin_color| json}}</span>
-  <span>Height: {{details?.height| json}}</span>
-  <span>Mass: {{details?.mass| json}}</span>
-
-  <button mat-flat-button routerLink="/home">back</button>
+  <span>Name: {{details?.name}}</span>
+  <span>Created: {{details?.created}}</span>
+  <span>Edited: {{details?.edited}}</span>
+  <span>Birth Year: {{details?.birth_year}}</span>
+  <span>Eye Color: {{details?.eye_color}}</span>
+  <span>Hair Color: {{details?.hair_color}}</span>
+  <span>Skin Color: {{details?.skin_color}}</span>
+  <span>Height: {{details?.height}}</span>
+  <span>Mass: {{details?.mass}}</span>
+  <a (click)="OpenHome(this.p_id)" routerLinkActive="active"> HomeWorld: {{details?.homeworld}}</a>
+  <button mat-flat-button routerLink="/home">Back</button>
 
 
 </div>
