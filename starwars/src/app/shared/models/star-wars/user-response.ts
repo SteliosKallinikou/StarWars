@@ -1,9 +1,14 @@
-import {UsersResult} from './users-result';
-import {Properties} from './properties';
+import {PlanetResult, UsersResult} from './users-result';
+import {CharacterProperties, PlanetProperties} from './properties';
 
 export interface UserResponse {
   message: string;
   results: UsersResult[];
+}
+
+export interface User_PlanetResponse{
+  message: string;
+  results: PlanetResult[]
 }
 
 export interface CharacterResponse {
@@ -11,19 +16,18 @@ export interface CharacterResponse {
   result: UserProperties;
 }
 
+export interface PlanetResponse{
+  message: string;
+  result: PlanetDetails;
+}
+
+
 export interface UserProperties {
-  properties: Properties
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  gender:string;
-  created: string;
-  edited: string;
-  name: string;
-  homeworld:string;
-  url: string;
+  properties: CharacterProperties
+
+}
+
+export interface  PlanetDetails{
+properties: PlanetProperties
 }
 

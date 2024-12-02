@@ -1,9 +1,9 @@
 <div>
-  <mat-tab-group class="items">
-    <mat-tab label="Characters">Star Wars Characters</mat-tab>
-    <mat-tab label="Planets"> Star Wars Charaters Planet </mat-tab>
+  <nav mat-tab-nav-bar class="items">
+    <a mat-tab-link routerLink="/home" routerLinkActive>Star Wars Characters</a>
+    <a mat-tab-link routerLink="/planets"> Star Wars Planets</a>
     <mat-tab label="Starships"> Star Wars StarShips </mat-tab>
-  </mat-tab-group>
+  </nav>
 </div>
 <div>
   <router-outlet/>

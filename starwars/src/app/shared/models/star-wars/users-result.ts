@@ -1,9 +1,15 @@
-import {Properties} from './properties';
 
 export interface UsersResult {
   uid: string;
   description: string;
   name: string;
   url: string;
-  properties: Properties
+}
+
+export interface PlanetResult{
+  uid: string;
+  description: string;
+  name: string;
+  url: string;
+
 }
