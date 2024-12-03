@@ -28,17 +28,14 @@ export class DetailsComponentComponent implements OnInit {
   ngOnInit():void {
     this.starWarsService.getCharacterDetails(this.uid()).pipe(map((properties)=> properties.result)).subscribe({
       next: (data)=>{
-        console.log(data.properties.name)
         this.details =(data.properties)
         this.p_id= this.details?.homeworld.substring(35)
-        console.log(this.p_id)
       }
     })
   }
   constructor(private router: Router) {
   }
   OpenHome(id:string|undefined):void{
-    console.log(id)
     this.router.navigate(['planets',id])
   }
 }
