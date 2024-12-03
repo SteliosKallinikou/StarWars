@@ -4,6 +4,7 @@ import {StarWarsService} from '../service/star-wars.service';
 import {map} from 'rxjs';
 import {CharacterProperties} from '../shared/models';
 import {MatButton} from '@angular/material/button';
+import {Location} from '@angular/common';
 
 
 
@@ -24,7 +25,7 @@ export class DetailsComponentComponent implements OnInit {
   starWarsService = inject(StarWarsService);
   details: CharacterProperties | undefined
   p_id: string|undefined
-
+  prevUrl: string = this.starWarsService.getPrevUrl()
 
 
   ngOnInit():void {
@@ -35,9 +36,12 @@ export class DetailsComponentComponent implements OnInit {
       }
     })
   }
-  constructor(private router: Router) {
+  constructor(private router: Router, private location:Location) {
   }
   OpenHome(id:string|undefined):void{
     this.router.navigate(['home/planets',id])
+  }
+  goBack(){
+    this.location.back()
   }
 }
