@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Observable, of, tap} from 'rxjs';
 import {
   CharacterResponse,
   PlanetResponse,
@@ -19,9 +19,11 @@ export class StarWarsService {
   URL = 'https://www.swapi.tech'
   private prevURL: string ="";
   private currURL: string="";
+  private users$: Observable<UserResponse> |undefined
+  private cache: { [key: string]: any } = {};
 
 
-  constructor(http: HttpClient, private router:Router) {
+  constructor(http: HttpClient ,private router:Router) {
     this.currURL= this.prevURL
     router.events.subscribe(event=>{
       if(event instanceof NavigationEnd){
@@ -33,32 +35,62 @@ export class StarWarsService {
 
   getUsers(): Observable<UserResponse> {
     const url = `${this.URL}/api/people/`
-    return this.http.get<UserResponse>(url)
+    if(this.cache[url]){
+      return of (this.cache[url])
+    }
+    return this.http.get<UserResponse>(url).pipe(tap((data=>{
+      this.cache[url]=data
+    })))
   }
 
   getCharacterDetails(index: string | undefined): Observable<CharacterResponse>{
     const url = `${this.URL}/api/people/`+`${index}`
-    return this.http.get<CharacterResponse>(url)
+    if(this.cache[url]){
+      return of (this.cache[url])
+    }
+    return this.http.get<CharacterResponse>(url).pipe(tap((data=>{
+      this.cache[url]=data
+    })))
   }
 
   getPlanetDetails(index: string|undefined): Observable<PlanetResponse>{
     const url = `${this.URL}/api/planets/`+`${index}`
-    return this.http.get<PlanetResponse>(url)
+    if(this.cache[url]){
+      return of (this.cache[url])
+    }
+    return this.http.get<PlanetResponse>(url).pipe(tap((data=>{
+      this.cache[url]=data
+    })))
   }
 
   getPlanets(): Observable<User_PlanetResponse>{
     const url =`${this.URL}/api/planets`;
-    return this.http.get<User_PlanetResponse>(url);
+    if(this.cache[url]){
+      return of (this.cache[url])
+    }
+    return this.http.get<User_PlanetResponse>(url).pipe(tap((data=>{
+      this.cache[url]=data
+    })))
   }
 
   getShips(): Observable<User_ShipResponse>{
     const url = `${this.URL}/api/starships`;
-    return this.http.get<User_ShipResponse>(url)
+    if(this.cache[url]){
+      return of (this.cache[url])
+    }
+    return this.http.get<User_ShipResponse>(url).pipe(tap((data=>{
+      this.cache[url]=data
+    })))
   }
 
   getShipDetails(index: string|undefined):Observable<ShipResponse>{
     const url = `${this.URL}/api/starships/`+`${index}`;
-    return this.http.get<ShipResponse>(url)
+    if(this.cache[url]){
+      return of (this.cache[url])
+    }
+    return this.http.get<ShipResponse>(url).pipe(tap((data=>{
+      this.cache[url]=data
+    })))
   }
 
   getPrevUrl():string{

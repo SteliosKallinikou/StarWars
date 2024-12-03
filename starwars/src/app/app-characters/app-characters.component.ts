@@ -9,7 +9,6 @@ import {UsersResult} from '../shared/models';
   standalone: true,
   imports: [
     MatButton,
-    RouterLink,
     RouterLinkActive
   ],
   templateUrl: './app-characters.component.html',
@@ -25,7 +24,7 @@ export class AppCharactersComponent {
     }
 
     openDetails(): void {
-      this.router.navigate(['details',this.character()?.uid])
+      this.router.navigate(['home/details',this.character()?.uid])
   }
 
 }
