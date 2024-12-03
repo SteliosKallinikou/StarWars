@@ -1,0 +1,24 @@
+<h1>{{planetDetails?.name}}</h1>
+
+<div class="wrapper">
+  <span>Name: {{planetDetails?.name}}</span>
+  <span>Climate: {{planetDetails?.climate}}</span>
+  <span>Diameter: {{planetDetails?.diameter}}</span>
+  <span>Gravity: {{planetDetails?.gravity}}</span>
+  <span>Orbital Period: {{planetDetails?.orbital_period}}</span>
+  <span>Rotational Period: {{planetDetails?.rotation_period}}</span>
+  <span>Surface Water: {{planetDetails?.surface_water}}</span>
+  <span>Population: {{planetDetails?.population}}</span>
+  <span>Created: {{planetDetails?.created}}</span>
+  <span>Edited: {{planetDetails?.edited}}</span>
+
+  @if(prevUrl.includes("/details")){
+    <button mat-flat-button (click)="goBack()">Back to Character</button>
+  }@else if (prevUrl.includes("/planets")){
+    <button mat-flat-button routerLink="/planets">Back to Planets</button>
+  }
+  <button mat-flat-button routerLink="/home">Go to Home Page</button>
+  <router-outlet></router-outlet>
+
+</div>
+
