@@ -5,6 +5,7 @@ import {StarWarsService} from '../service/star-wars.service';
 import {AppCharactersComponent} from '../app-characters/app-characters.component';
 import {UsersResult} from '../shared/models';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -26,7 +27,6 @@ export class HomeComponent implements OnInit{
     ).subscribe({
       next: (data) => {
         this.people = data
-        console.log(data)
       },
       complete: () => {
         this.isApploading = false

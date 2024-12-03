@@ -1,7 +1,14 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {CharacterResponse, PlanetResponse, User_PlanetResponse, UserResponse} from '../shared/models';
+import {
+  CharacterResponse,
+  PlanetResponse,
+  ShipResponse,
+  User_PlanetResponse,
+  User_ShipResponse,
+  UserResponse
+} from '../shared/models';
 import {NavigationEnd, Router} from '@angular/router';
 
 @Injectable({
@@ -42,6 +49,16 @@ export class StarWarsService {
   getPlanets(): Observable<User_PlanetResponse>{
     const url =`${this.URL}/api/planets`;
     return this.http.get<User_PlanetResponse>(url);
+  }
+
+  getShips(): Observable<User_ShipResponse>{
+    const url = `${this.URL}/api/starships`;
+    return this.http.get<User_ShipResponse>(url)
+  }
+
+  getShipDetails(index: string|undefined):Observable<ShipResponse>{
+    const url = `${this.URL}/api/starships/`+`${index}`;
+    return this.http.get<ShipResponse>(url)
   }
 
   getPrevUrl():string{
