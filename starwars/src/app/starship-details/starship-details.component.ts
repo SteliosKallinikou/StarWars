@@ -1,9 +1,10 @@
-import {Component, inject, input, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {StarWarsService} from '../service/star-wars.service';
 import {map} from 'rxjs';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {ShipProperties} from '../shared/models';
 import {MatButton} from '@angular/material/button';
+import {DetailsComponentComponent} from '../details-component/details-component.component';
 
 
 @Component({
@@ -11,7 +12,8 @@ import {MatButton} from '@angular/material/button';
   standalone: true,
   imports: [
     MatButton,
-    RouterLink
+    RouterLink,
+    DetailsComponentComponent
   ],
   templateUrl: './starship-details.component.html',
   styleUrl: './starship-details.component.scss'
@@ -22,6 +24,8 @@ export class StarshipDetailsComponent implements OnInit{
   route:ActivatedRoute= inject(ActivatedRoute)
   ship_id: string|undefined
   ShipDetails: ShipProperties|undefined
+  Pilot:string[]=[]
+  id: string=""
 
   ngOnInit() {
     this.ship_id = this.route.snapshot.params['id']
@@ -29,6 +33,15 @@ export class StarshipDetailsComponent implements OnInit{
     this.starWarsService.getShipDetails(this.ship_id).pipe(map((propertie)=>propertie.result)).subscribe({
       next:(data)=>{
         this.ShipDetails=data.properties
+       if(data.properties?.pilots.length!=0)
+       {
+         for(let i=0; i<data.properties.pilots.length;i++)
+         {
+           this.Pilot[i]=data.properties?.pilots[i].substring(34)
+            console.log(this.Pilot[i])
+         }
+         console.log(this.id)
+       }
       }
     })
 
