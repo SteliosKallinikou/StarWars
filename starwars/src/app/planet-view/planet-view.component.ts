@@ -32,7 +32,7 @@ constructor(private router: Router) {
   }
 
   Details(id:string){
-    this.router.navigate(['planets',id])
+    this.router.navigate(['home/planets',id])
   }
 
 }

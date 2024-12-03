@@ -7,6 +7,7 @@ import {MatButton} from '@angular/material/button';
 
 
 
+
 @Component({
   selector: 'app-details-component',
   standalone: true,
@@ -25,6 +26,7 @@ export class DetailsComponentComponent implements OnInit {
   p_id: string|undefined
 
 
+
   ngOnInit():void {
     this.starWarsService.getCharacterDetails(this.uid()).pipe(map((properties)=> properties.result)).subscribe({
       next: (data)=>{
@@ -36,6 +38,6 @@ export class DetailsComponentComponent implements OnInit {
   constructor(private router: Router) {
   }
   OpenHome(id:string|undefined):void{
-    this.router.navigate(['planets',id])
+    this.router.navigate(['home/planets',id])
   }
 }

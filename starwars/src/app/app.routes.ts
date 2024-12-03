@@ -18,23 +18,23 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'details/:uid',
+    path: 'home/details/:uid',
     component: DetailsComponentComponent
   },
   {
-    path: 'planets/:id',
+    path: 'home/planets/:id',
     component: PlanetComponent
   },
   {
-    path:'planets',
+    path:'home/planets',
     component: PlanetViewComponent
   },
   {
-    path:'starships',
+    path:'home/starships',
     component: StarshipComponent
   },
   {
-    path: 'starships/:id',
+    path: 'home/starships/:id',
     component: StarshipDetailsComponent
   },
   {
