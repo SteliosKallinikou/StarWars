@@ -1,5 +1,5 @@
 
-@if(prevUrl.includes("/starships")){
+@if(currURL.includes("/starships")){
   <span>{{details?.name}},</span>
 } @else {
   <div class="wrapper">
@@ -11,6 +11,7 @@
     <span>Eye Color: {{details?.eye_color}}</span>
     <span>Hair Color: {{details?.hair_color}}</span>
     <span>Skin Color: {{details?.skin_color}}</span>
+    <span>Gender: {{details?.gender}}</span>
     <span>Height: {{details?.height}}</span>
     <span>Mass: {{details?.mass}}</span>
     <a (click)="OpenHome(this.p_id)" routerLinkActive="active"> HomeWorld: {{details?.homeworld}}</a>

@@ -34,4 +34,16 @@ export class StarshipComponent implements OnInit{
     this.router.navigate(['home/starships',id])
   }
 
+  LoadMore(){
+    this.starWarsService.getMorePlanets().subscribe({
+      next:(data)=>{
+        for(let i=0;i<data.results.length;i++){
+          this.starships.push(data.results[i])
+        }
+      }
+    })
+
+  }
+
+
 }
