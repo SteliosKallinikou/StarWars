@@ -35,4 +35,15 @@ constructor(private router: Router) {
     this.router.navigate(['home/planets',id])
   }
 
+  LoadMore(){
+    this.starWarsService.getMorePlanets().subscribe({
+      next:(data)=>{
+        for(let i=0;i<data.results.length;i++){
+          this.planets.push(data.results[i])
+        }
+      }
+    })
+
+  }
+
 }
