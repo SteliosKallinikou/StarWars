@@ -5,14 +5,17 @@ export interface UserResponse {
   message: string;
   results: UsersResult[];
   next: string;
-  total_pages:string;
+  total_pages:number;
+  total_records: number;
 }
 
 export interface User_PlanetResponse{
   message: string;
   results: PlanetResult[]
   next: string;
-  total_pages:string;
+  total_pages:number;
+  total_records: number;
+
 }
 
 export interface User_ShipResponse{
