@@ -19,6 +19,7 @@ export class StarshipComponent implements OnInit{
   starWarsService = inject(StarWarsService);
   starships: ShipResult[]=[]
 
+
   constructor(private router: Router) {
   }
 
@@ -35,7 +36,7 @@ export class StarshipComponent implements OnInit{
   }
 
   LoadMore(){
-    this.starWarsService.getMorePlanets().subscribe({
+    this.starWarsService.getMoreStarShips().subscribe({
       next:(data)=>{
         for(let i=0;i<data.results.length;i++){
           this.starships.push(data.results[i])

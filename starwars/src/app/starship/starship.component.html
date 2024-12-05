@@ -1,10 +1,16 @@
 <h1>Star Wars StarShips</h1>
-<div class="ships">
-  @for (ships of starships; track $index) {
-    <div>
-      <span>{{ships.name}}</span>
-      <button mat-stroked-button  routerLinkActive="active" (click)="ShowDetails(starships[$index].uid)">Details</button>
-    </div>
+<div class="contain">
+  <div class="ships">
+    @for (ships of starships; track $index) {
+      <div>
+        <span>{{ships.name}}</span>
+        <button mat-stroked-button  routerLinkActive="active" (click)="ShowDetails(starships[$index].uid)">Details</button>
+      </div>
+    }
+  </div>
+  @if (!this.starWarsService.getShipLimit()){
+    <button class="load" mat-stroked-button (click)="LoadMore()">Load More StarShips</button>
+  } @else {
+    <label>You Have Reached The Maximum StarWars StarShips that are available</label>
   }
-  <button mat-stroked-button  routerLinkActive="active" (click)="LoadMore()">Load More</button>
 </div>

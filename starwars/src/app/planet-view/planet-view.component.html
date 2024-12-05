@@ -1,10 +1,16 @@
 <h1>Star Wars Planets</h1>
-<div class="planets">
-  @for (planet of planets; track $index) {
-    <div>
-    <span>{{planet.name}}</span>
-    <button mat-stroked-button  routerLinkActive="active" (click)="Details(planets[$index].uid)">Details</button>
-    </div>
+<div class="contain">
+  <div class="planets">
+    @for (planet of planets; track $index) {
+      <div>
+        <span>{{planet.name}}</span>
+        <button mat-stroked-button  routerLinkActive="active" (click)="Details(planets[$index].uid)">Details</button>
+      </div>
+    }
+  </div>
+  @if (!this.starWarsService.getPlanetLimit()){
+    <button class="load" mat-stroked-button (click)="LoadMore()">Load More Planets</button>
+  } @else {
+    <label>You Have Reached The Maximum StarWars Planets that are available</label>
   }
-  <button mat-stroked-button  routerLinkActive="active" (click)="LoadMore()">Load More</button>
 </div>
