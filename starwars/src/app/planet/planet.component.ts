@@ -26,10 +26,13 @@ export class PlanetComponent implements OnInit {
   planetDetails: PlanetProperties | undefined
   prevUrl: string = this.starWarsService.getPrevUrl()
 
+
   constructor(private location: Location) {
+
   }
 
   ngOnInit() {
+
     this.p_id = this.route.snapshot.params['id']
     this.starWarsService.getPlanetDetails(this.p_id).pipe(map((properties) => properties.result)).subscribe({
       next: (data) => {

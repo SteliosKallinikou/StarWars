@@ -25,7 +25,7 @@ export class StarshipDetailsComponent implements OnInit{
   ship_id: string|undefined
   ShipDetails: ShipProperties|undefined
   Pilot:string[]=[]
-
+  id: string=""
 
   ngOnInit() {
     this.ship_id = this.route.snapshot.params['id']

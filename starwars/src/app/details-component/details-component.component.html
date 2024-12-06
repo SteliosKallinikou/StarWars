@@ -14,14 +14,8 @@
     <span>Gender: {{details?.gender}}</span>
     <span>Height: {{details?.height}}</span>
     <span>Mass: {{details?.mass}}</span>
-    <a  (click)="OpenHome(this.p_id)" routerLinkActive="active"> HomeWorld: {{details?.homeworld}}</a>
-    <div class="loading">
-      @if (isApploading) {
-        <mat-spinner ></mat-spinner>
-      }
-    </div>
+    <a (click)="OpenHome(this.p_id)" routerLinkActive="active"> HomeWorld: {{details?.homeworld}}</a>
     <button mat-stroked-button routerLink="/home">Back</button>
 
   </div>
-
 }

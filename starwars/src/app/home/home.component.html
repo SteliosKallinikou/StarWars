@@ -1,18 +1,15 @@
-<h1>Star Wars Characters</h1>
 <div class="wrap">
-
+  <h1>Star Wars Characters</h1>
   <div class="container">
-    @for (person of people; track person.uid) {
+    @for (person of people; track $index) {
       <app-app-characters [character]=person></app-app-characters>
     }
   </div>
-  <div class="load-more">
-    @if (!this.starWarsService.getUserLimit()){
-      <button class="load" mat-stroked-button (click)="LoadMore()">Load More Characters</button>
-    } @else {
-      <label>You Have Reached The Maximum StarWars Characters that are available</label>
-    }
-  </div>
+  @if (!this.starWarsService.getUserLimit()){
+    <button class="load" mat-stroked-button (click)="LoadMore()">Load More Characters</button>
+  } @else {
+    <label>You Have Reached The Maximum StarWars Characters that are available</label>
+  }
 
   <div class="loading">
     @if (isApploading) {

@@ -1,4 +1,5 @@
 import {Component,  inject, OnInit} from '@angular/core';
+
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {StarWarsService} from '../service/star-wars.service';
 import {AppCharactersComponent} from '../app-characters/app-characters.component';
@@ -24,6 +25,8 @@ export class HomeComponent implements OnInit {
   people: UsersResult[] = []
 
 
+
+
   ngOnInit(): void {
     this.isApploading = true
     this.starWarsService.getUsers().subscribe({
@@ -34,8 +37,10 @@ export class HomeComponent implements OnInit {
         this.isApploading = false
       }
     })
-  }
 
+
+
+  }
   LoadMore(){
     this.starWarsService.getMoreUsers().subscribe({
       next:(data)=>{
@@ -45,4 +50,8 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+
+
+
+
 }
