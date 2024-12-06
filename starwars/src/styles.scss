@@ -46,10 +46,12 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   padding: 0;
-  background-image: url('fb2d193eeacd7483b652d86d155112d8.jpg');
+  // TODO
+  // please use better naming for files
+  // for example star-wars-bg.jpg it will be more readable
+  background-image: url('assets/images/star-wars-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-
 }
