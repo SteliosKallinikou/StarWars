@@ -17,26 +17,35 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 })
 export class StarWarsService {
   http = inject(HttpClient);
+  // TODO Could be -> private readonly URL
   URL = 'https://www.swapi.tech'
 
   private prevURL: string ="";
   private currURL: string="";
+  // TODO not the best idea use any
   private cache: { [key: string]: any } = {};
 
+  // TODO no need a type in case it evident
+  // In TypeScript, if the type can be inferred from the assigned value, you don't need to explicitly specify the type.
+  // In this case, since 0 is a number, TypeScript can infer that UserPageCount is of type number.
+  // Therefore, you can simplify the declaration as follows: UserPageCount = 0;
   UserPageCount:number=0
+  //TODO camelCase
   Userlimit: boolean=false
   UsernextUrl:string=""
 
   PlanetPageCount:number=0
+  //TODO camelCase
   Planetlimit: boolean=false
   PlanetnextUrl:string=""
 
   StarPageCount:number=0
+  //TODO camelCase
   Starlimit: boolean=false
   StarnextUrl:string=""
 
-
-
+  //TODO not the best idea use private readonly router:Router here
+  // we previously discussed better approach
   constructor(private readonly router:Router) {
     this.currURL= this.prevURL
     router.events.pipe(tap(()=>{
@@ -57,6 +66,7 @@ export class StarWarsService {
     }
     return this.http.get<UserResponse>(url).pipe(tap((data=>{
       this.cache[url]=data
+      // TODO no need console log in finale code
       console.log(data)
       this.UsernextUrl= this.cache[url].next
     })))
@@ -71,6 +81,7 @@ export class StarWarsService {
 
     this.UserPageCount++
     return this.http.get<UserResponse>(this.UsernextUrl).pipe(tap((data=>{
+      // TODO no need console log in finale code
       console.log(data)
       this.cache[this.UsernextUrl]=data
       this.UsernextUrl= data.next
@@ -161,16 +172,23 @@ export class StarWarsService {
     })))
 
   }
+  // TODO could be a getter
+  // example get prevUrl(): string {
+  //   return this.currURL;
+  // }
   getPrevUrl():string{
     return this.currURL;
   }
 
+  // TODO could be a getter
   getUserLimit():boolean{
     return this.Userlimit
   }
+  // TODO could be a getter
   getPlanetLimit():boolean{
     return this.Planetlimit
   }
+  // TODO could be a getter
   getShipLimit():boolean{
     return this.Starlimit
   }

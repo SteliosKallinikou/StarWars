@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { TopBarComponent } from './top-bar/top-bar.component';
 
 @Component({
@@ -9,6 +9,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  // TODO
+  // wrong type for title property should be string
+  // also it cold be removed as it is not used
   title: "starwars" | undefined;
-
 }

@@ -1,12 +1,16 @@
-<div class="items">
-  <nav mat-tab-nav-bar [tabPanel]="tabpanel" >
+<!-- TODO -->
+<nav class="items-container" mat-tab-nav-bar [tabPanel]="tabPanel">
+  <div class="items">
     <a mat-tab-link routerLink="/home" routerLinkActive><label>Star Wars Characters</label></a>
     <a mat-tab-link routerLink="home/planets"> <label>Star Wars Planets</label></a>
     <a mat-tab-link routerLink="home/starships"> <label>Star Wars StarShips</label> </a>
-  </nav>
-</div>
+  </div>
+</nav>
+
 <div>
-  <mat-tab-nav-panel #tabpanel></mat-tab-nav-panel>
+  <!--TODO-->
+  <!-- tabpanel should be camel case tabPanel -->
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
   <router-outlet/>
 </div>
 
