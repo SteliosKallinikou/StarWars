@@ -13,10 +13,3 @@ export interface PlanetResult{
   url: string;
 
 }
-
-export interface ShipResult{
-  uid: string;
-  description: string;
-  name: string;
-  url: string;
-}

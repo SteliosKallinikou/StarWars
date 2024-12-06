@@ -34,7 +34,12 @@ $starwars-theme: mat.define-theme((
 
 // Comment out the line below if you want to use the deprecated `color` inputs.
 // @include mat.color-variants-backwards-compatibility($starwars-theme);
-
+//*{
+//  color: yellow;
+////   // background-image: url();
+////  background-repeat: no-repeat;
+////  background-position: center;
+////}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
