@@ -3,7 +3,7 @@
   @for (ships of starships; track $index) {
     <div>
       <span>{{ships.name}}</span>
-      <button mat-stroked-button  routerLinkActive="active" (click)="ShowDetails(starships[$index].uid)">Details</button>
+      <button mat-flat-button  routerLinkActive="active" (click)="ShowDetails(starships[$index].uid)">Details</button>
     </div>
   }
 </div>

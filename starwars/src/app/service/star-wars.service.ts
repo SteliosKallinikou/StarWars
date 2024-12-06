@@ -19,6 +19,7 @@ export class StarWarsService {
   URL = 'https://www.swapi.tech'
   private prevURL: string ="";
   private currURL: string="";
+  private users$: Observable<UserResponse> |undefined
   private cache: { [key: string]: any } = {};
 
 
