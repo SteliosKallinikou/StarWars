@@ -1,26 +1,32 @@
-<h1>{{ShipDetails?.model}}</h1>
+<!--TODO spacing and formatting -->
+<!-- also you could wrap all inside if block in case shipDetails undefined -->
+<!-- example  @if (shipDetails$ | async; as shipDetails) {...} -->
+<h1>{{shipDetails?.model}}</h1>
 
 <div class="wrapper">
-  <span>Model: {{ShipDetails?.model}}</span>
-  <span>Manufacturer: {{ShipDetails?.manufacturer}}</span>
-  <span>Cost in Credits: {{ShipDetails?.cost_in_credits}}</span>
-  <span>Cargo Capacity: {{ShipDetails?.cargo_capacity}}</span>
-  <span>Length: {{ShipDetails?.length}}</span>
-  <span>Class: {{ShipDetails?.starship_class}}</span>
-  <span>HyperDrive Rating: {{ShipDetails?.hyperdrive_rating}}</span>
-  <span>Max atmospheric Speed: {{ShipDetails?.max_atmosphering_speed}}</span>
-  <span>MGLT: {{ShipDetails?.MGLT}}</span>
-  <span>Consumables: {{ShipDetails?.consumables}}</span>
-  <span>Passengers: {{ShipDetails?.passengers}}</span>
+  <span>Model: {{shipDetails?.model}}</span>
+  <span>Manufacturer: {{shipDetails?.manufacturer}}</span>
+  <span>Cost in Credits: {{shipDetails?.cost_in_credits}}</span>
+  <span>Cargo Capacity: {{shipDetails?.cargo_capacity}}</span>
+  <span>Length: {{shipDetails?.length}}</span>
+  <span>Class: {{shipDetails?.starship_class}}</span>
+  <span>HyperDrive Rating: {{shipDetails?.hyperdrive_rating}}</span>
+  <span>Max atmospheric Speed: {{shipDetails?.max_atmosphering_speed}}</span>
+  <span>MGLT: {{shipDetails?.MGLT}}</span>
+  <span>Consumables: {{shipDetails?.consumables}}</span>
+  <span>Passengers: {{shipDetails?.passengers}}</span>
   <span>Pilots:</span>
-  @if (Pilot.length!=0) {
-    @for (pilot of Pilot; track $index) {
-      <app-details-component [uid]=Pilot[$index]></app-details-component>
+  <!-- TODO unnecessary !=0 could be @if (pilot.length) { -->
+  @if (pilot.length!=0) {
+  <!-- TODO names are identical pilot of pilot req change -> pilot of pilots -->
+    @for (pilot of pilot; track $index) {
+    <!-- TODO unnecessary Pilot[$index] -->
+      <app-details-component [uid]=pilot></app-details-component>
     }
   }
-  <span>Crew: {{ShipDetails?.crew}}</span>
-  <span>Created: {{ShipDetails?.created}}</span>
-  <span>Edited: {{ShipDetails?.edited}}</span>
+  <span>Crew: {{shipDetails?.crew}}</span>
+  <span>Created: {{shipDetails?.created}}</span>
+  <span>Edited: {{shipDetails?.edited}}</span>
 
   <button mat-stroked-button routerLink="/home">Go to Home Page</button>
   <button mat-stroked-button routerLink="/home/starships">Go to StarShips Page</button>

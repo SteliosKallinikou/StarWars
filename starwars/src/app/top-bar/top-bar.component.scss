@@ -1,13 +1,29 @@
-@use '@angular/material' as mat;
+// TODO
+// unused css should be removed
+//@use '@angular/material' as mat;
 
-
-label {
-  transition: 1s;
-  color: yellow;
-
+// TODO
+// also better use more specific selectors like
+.items-container {
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    // TODO
+    // fixed for mobile styles
+    a {
+      width: 25%;
+      // TODO
+      // add width to elements it will prevent content from jumping
+      transition: 1s;
+      color: yellow;
+      // TODO
+      // more scss way to write hover
+      &:hover{
+        font-size: 20pt;
+      }
+    }
+  }
 }
-label:hover{
 
-  font-size: 20pt;
-}
 

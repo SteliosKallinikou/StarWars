@@ -1,11 +1,11 @@
+// TODO spacing
 import { Routes } from '@angular/router';
-import {DetailsComponentComponent} from './details-component/details-component.component';
-import {HomeComponent} from './home/home.component';
-import {PlanetComponent} from './planet/planet.component';
-import {PlanetViewComponent} from './planet-view/planet-view.component';
-import {StarshipComponent} from './starship/starship.component';
-import {StarshipDetailsComponent} from './starship-details/starship-details.component';
-
+import { DetailsComponentComponent } from './details-component/details-component.component';
+import { HomeComponent } from './home/home.component';
+import { PlanetComponent } from './planet/planet.component';
+import { PlanetViewComponent } from './planet-view/planet-view.component';
+import { StarshipComponent } from './starship/starship.component';
+import { StarshipDetailsComponent } from './starship-details/starship-details.component';
 
 export const routes: Routes = [
   {

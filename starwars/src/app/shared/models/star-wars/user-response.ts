@@ -1,4 +1,6 @@
-import {PlanetResult, ShipResult, UsersResult} from './users-result';
+// TODO formatting and spacing should be added to make the code more readable
+
+import { PlanetResult, ShipResult, UsersResult } from './users-result';
 import {CharacterProperties, PlanetProperties, ShipProperties} from './properties';
 
 export interface UserResponse {
@@ -43,7 +45,6 @@ export interface ShipResponse{
 
 export interface UserProperties {
   properties: CharacterProperties
-
 }
 
 export interface  PlanetDetails{
