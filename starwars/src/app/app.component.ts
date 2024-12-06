@@ -1,14 +1,13 @@
-import {Component} from '@angular/core';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TopBarComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title: "starwars" | undefined;
-
+  title = 'starwars';
 }
