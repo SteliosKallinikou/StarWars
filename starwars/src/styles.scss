@@ -28,9 +28,10 @@ $starwars-theme: mat.define-theme((
   @include mat.all-component-themes($starwars-theme);
 }
 
-*{
-color: yellow;
-
+// TODO
+// Not the best way to apply styles with *
+* {
+  color: yellow;
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
