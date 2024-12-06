@@ -1,12 +1,13 @@
 @use '@angular/material' as mat;
 
 
-label{
+label {
   transition: 1s;
-  color: yellow
-}
+  color: yellow;
 
+}
 label:hover{
 
   font-size: 20pt;
 }
+

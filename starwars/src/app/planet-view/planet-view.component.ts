@@ -4,13 +4,15 @@ import { PlanetResult} from '../shared/models';
 import {map} from 'rxjs';
 import {MatButton} from '@angular/material/button';
 import {Router, RouterLinkActive} from '@angular/router';
+import {MatProgressSpinner} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-planet-view',
   standalone: true,
   imports: [
     MatButton,
-    RouterLinkActive
+    RouterLinkActive,
+    MatProgressSpinner
   ],
   templateUrl: './planet-view.component.html',
   styleUrl: './planet-view.component.scss'
@@ -18,18 +20,25 @@ import {Router, RouterLinkActive} from '@angular/router';
 export class PlanetViewComponent implements OnInit{
   starWarsService = inject(StarWarsService);
   planets: PlanetResult[]=[]
-
+  isApploading = false
 
 constructor(private router: Router) {
 }
-  ngOnInit() {
-    this.starWarsService.getPlanets().pipe(map((result) => result.results)
+
+  ngOnInit(){
+    this.isApploading=true
+    this.starWarsService.getPlanets().pipe(
+      map((result) => result.results)
     ).subscribe({
       next:(data=>{
         this.planets= data
-      })
+      }),
+      complete: () => {
+        this.isApploading = false
+      }
     })
   }
+
 
   Details(id:string){
     this.router.navigate(['home/planets',id])

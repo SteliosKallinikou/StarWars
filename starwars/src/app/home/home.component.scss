@@ -1,10 +1,18 @@
 h1{
   text-align: center;
+
 }
 .container{
-  columns: 2;
-  padding: 0 20px 50px 10px;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 12px;
+}
+
+.load-more {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
 }
 
 .wrap{
@@ -14,4 +22,10 @@ h1{
 .loading{
   display: flex;
   justify-content: center;
+}
+
+label{
+  border: 1px solid grey;
+  border-radius: 100px;
+  padding: 10px 10px 10px 10px;
 }

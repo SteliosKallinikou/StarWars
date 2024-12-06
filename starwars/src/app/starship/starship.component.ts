@@ -1,36 +1,47 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component,inject,OnInit} from '@angular/core';
 import {StarWarsService} from '../service/star-wars.service';
 import {ShipResult} from '../shared/models';
 import {map} from 'rxjs';
 import {MatButton} from '@angular/material/button';
 import {Router, RouterLinkActive} from '@angular/router';
+import {MatProgressSpinner} from '@angular/material/progress-spinner';
+
+
 @Component({
   selector: 'app-starship',
   standalone: true,
   imports: [
     MatButton,
-    RouterLinkActive
+    RouterLinkActive,
+    MatProgressSpinner
   ],
   templateUrl: './starship.component.html',
   styleUrl: './starship.component.scss'
 })
 export class StarshipComponent implements OnInit{
-
   starWarsService = inject(StarWarsService);
-  starships: ShipResult[]=[]
-
+  starships: ShipResult[] = [];
+  isApploading = false
 
   constructor(private router: Router) {
+
   }
 
-  ngOnInit() {
-    this.starWarsService.getShips().pipe(map((result)=>result.results)).subscribe({
+  ngOnInit(){
+    this.isApploading=true
+    this.starWarsService.getShips().pipe(
+      map((result)=>result.results),
+    ).subscribe({
       next:(data)=>{
         this.starships=data;
-    }
+      },
+      complete: () => {
+        this.isApploading = false
+      }
     })
 
   }
+
   ShowDetails(id:string){
     this.router.navigate(['home/starships',id])
   }
@@ -45,6 +56,5 @@ export class StarshipComponent implements OnInit{
     })
 
   }
-
 
 }

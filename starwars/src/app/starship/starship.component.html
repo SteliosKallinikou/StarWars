@@ -8,9 +8,17 @@
       </div>
     }
   </div>
-  @if (!this.starWarsService.getShipLimit()){
-    <button class="load" mat-stroked-button (click)="LoadMore()">Load More StarShips</button>
-  } @else {
-    <label>You Have Reached The Maximum StarWars StarShips that are available</label>
-  }
+  <div>
+    @if (isApploading) {
+      <mat-spinner ></mat-spinner>
+    }
+  </div>
+  <div class="load">
+    @if (!this.starWarsService.getShipLimit()){
+      <button mat-stroked-button (click)="LoadMore()">Load More StarShips</button>
+    } @else {
+      <label>You Have Reached The Maximum StarWars StarShips that are available</label>
+    }
+  </div>
+
 </div>
