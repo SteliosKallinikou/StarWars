@@ -15,6 +15,7 @@ import {MatButton} from '@angular/material/button';
     MatProgressSpinner,
     AppCharactersComponent,
     MatButton,
+
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -23,8 +24,7 @@ export class HomeComponent implements OnInit {
   isApploading = false
   starWarsService = inject(StarWarsService);
   people: UsersResult[] = []
-
-
+  url:string=""
 
 
   ngOnInit(): void {
@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     this.starWarsService.getUsers().subscribe({
       next: (data) => {
         this.people = data.results
+         this.url = data.next
       },
       complete: () => {
         this.isApploading = false

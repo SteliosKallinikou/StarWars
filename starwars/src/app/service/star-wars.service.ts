@@ -21,24 +21,17 @@ export class StarWarsService {
   private prevURL: string ="";
   private currURL: string="";
   private cache: { [key: string]: any } = {};
-  UserPageCount:number=0
-  Userlimit: boolean=false
-  PlanetPageCount:number=0
-  Planetlimit: boolean=false
-  StarPageCount:number=0
-  Starlimit: boolean=false
 
 
 
   constructor(private readonly router:Router) {
     this.currURL= this.prevURL
     router.events.pipe(tap(()=>{
-    })).subscribe({
-      next:(event)=>{
-          if(event instanceof NavigationEnd){
-            this.prevURL=this.currURL
-            this.currURL=event.url;
-          }
+
+    })).subscribe(event=>{
+      if(event instanceof NavigationEnd){
+        this.prevURL=this.currURL
+        this.currURL=event.url;
       }
     })
   }
@@ -50,19 +43,16 @@ export class StarWarsService {
     }
     return this.http.get<UserResponse>(url).pipe(tap((data=>{
       this.cache[url]=data
-      console.log(data)
       this.nextUrl= this.cache[url].next
     })))
   }
 
   getMoreUsers(): Observable<UserResponse> {
     const url = `${this.URL}/api/people/`
-    if(this.UserPageCount===this.cache[url].total_pages-2){
-      this.Userlimit=true
-      return this.http.get<UserResponse>(this.nextUrl)
+    if(this.cache[url].total_pages>10){
+      return of (this.cache[url].previous)
     }
 
-    this.UserPageCount++
     return this.http.get<UserResponse>(this.nextUrl).pipe(tap((data=>{
       this.cache[this.nextUrl]=data
       this.nextUrl= data.next
@@ -102,16 +92,12 @@ export class StarWarsService {
   }
 
   getMorePlanets():Observable<User_PlanetResponse>{
-    const url = `${this.URL}/api/planets`
-    if(this.PlanetPageCount===this.cache[url].total_pages-2){
-      this.Planetlimit=true
-      this.cache[this.nextUrl].limit=true
-      return this.http.get<User_PlanetResponse>(this.nextUrl)
-    }
+    const url = `${this.URL}/api/people/`
+    // if(this.cache[url].total_pages>10){
+    //   return of (this.cache[url].previous)
+    // }
 
-    this.PlanetPageCount++
     return this.http.get<User_PlanetResponse>(this.nextUrl).pipe(tap((data=>{
-      console.log(data)
       this.cache[this.nextUrl]=data
       this.nextUrl= data.next
     })))
@@ -141,29 +127,20 @@ export class StarWarsService {
   }
 
   getMoreStarShips():Observable<User_ShipResponse>{
-    const url = `${this.URL}/api/starships`
-    if(this.StarPageCount===this.cache[url].total_pages-2){
-      this.Starlimit=true
-      return this.http.get<User_ShipResponse>(this.nextUrl)
-    }
-    this.StarPageCount++
+    const url = `${this.URL}/api/people/`
+    // if(this.cache[url].total_pages>10){
+    //   return of (this.cache[url].previous)
+    // }
+
     return this.http.get<User_ShipResponse>(this.nextUrl).pipe(tap((data=>{
       this.cache[this.nextUrl]=data
       this.nextUrl= data.next
     })))
 
   }
+
+
   getPrevUrl():string{
     return this.currURL;
-  }
-
-  getUserLimit():boolean{
-    return this.Userlimit
-  }
-  getPlanetLimit():boolean{
-    return this.Planetlimit
-  }
-  getShipLimit():boolean{
-    return this.Starlimit
   }
 }

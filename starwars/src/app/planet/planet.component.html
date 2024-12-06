@@ -11,11 +11,10 @@
   <span>Population: {{planetDetails?.population}}</span>
   <span>Created: {{planetDetails?.created}}</span>
   <span>Edited: {{planetDetails?.edited}}</span>
-  <div>dsdsa{{prevUrl}}</div>
 
   @if(prevUrl.includes("/details")){
     <button mat-stroked-button (click)="goBack()">Back to Character</button>
-  }@if (prevUrl.includes("/planets")){
+  }@else if (prevUrl.includes("/planets")){
     <button mat-stroked-button routerLink="/home/planets">Back to Planets</button>
   }
   <button mat-stroked-button routerLink="/home">Go to Home Page</button>
