@@ -1,6 +1,6 @@
 import {Component, input} from '@angular/core';
 import {MatButton} from '@angular/material/button';
-import {Router, RouterLink, RouterLinkActive} from '@angular/router';
+import {Router, RouterLinkActive} from '@angular/router';
 import {UsersResult} from '../shared/models';
 
 
@@ -18,9 +18,7 @@ export class AppCharactersComponent {
   character= input.required<UsersResult>();
   protected readonly length = length;
 
-    constructor(
-      private  router:Router
-  ) {
+    constructor(private  router:Router) {
     }
 
     openDetails(): void {

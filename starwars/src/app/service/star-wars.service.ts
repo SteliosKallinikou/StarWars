@@ -10,6 +10,7 @@ import {
   UserResponse
 } from '../shared/models';
 import {NavigationEnd, Router} from '@angular/router';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: "root"
@@ -17,23 +18,29 @@ import {NavigationEnd, Router} from '@angular/router';
 export class StarWarsService {
   http = inject(HttpClient);
   URL = 'https://www.swapi.tech'
-  nextUrl:string=""
+
   private prevURL: string ="";
   private currURL: string="";
   private cache: { [key: string]: any } = {};
+
   UserPageCount:number=0
   Userlimit: boolean=false
+  UsernextUrl:string=""
+
   PlanetPageCount:number=0
   Planetlimit: boolean=false
+  PlanetnextUrl:string=""
+
   StarPageCount:number=0
   Starlimit: boolean=false
+  StarnextUrl:string=""
 
 
 
   constructor(private readonly router:Router) {
     this.currURL= this.prevURL
     router.events.pipe(tap(()=>{
-    })).subscribe({
+    }),takeUntilDestroyed()).subscribe({
       next:(event)=>{
           if(event instanceof NavigationEnd){
             this.prevURL=this.currURL
@@ -51,7 +58,7 @@ export class StarWarsService {
     return this.http.get<UserResponse>(url).pipe(tap((data=>{
       this.cache[url]=data
       console.log(data)
-      this.nextUrl= this.cache[url].next
+      this.UsernextUrl= this.cache[url].next
     })))
   }
 
@@ -59,13 +66,14 @@ export class StarWarsService {
     const url = `${this.URL}/api/people/`
     if(this.UserPageCount===this.cache[url].total_pages-2){
       this.Userlimit=true
-      return this.http.get<UserResponse>(this.nextUrl)
+      return this.http.get<UserResponse>(this.UsernextUrl)
     }
 
     this.UserPageCount++
-    return this.http.get<UserResponse>(this.nextUrl).pipe(tap((data=>{
-      this.cache[this.nextUrl]=data
-      this.nextUrl= data.next
+    return this.http.get<UserResponse>(this.UsernextUrl).pipe(tap((data=>{
+      console.log(data)
+      this.cache[this.UsernextUrl]=data
+      this.UsernextUrl= data.next
     })))
 
   }
@@ -97,7 +105,7 @@ export class StarWarsService {
     }
     return this.http.get<User_PlanetResponse>(url).pipe(tap((data=>{
       this.cache[url]=data
-      this.nextUrl= this.cache[url].next
+      this.PlanetnextUrl= this.cache[url].next
     })))
   }
 
@@ -105,15 +113,15 @@ export class StarWarsService {
     const url = `${this.URL}/api/planets`
     if(this.PlanetPageCount===this.cache[url].total_pages-2){
       this.Planetlimit=true
-      this.cache[this.nextUrl].limit=true
-      return this.http.get<User_PlanetResponse>(this.nextUrl)
+      this.cache[this.PlanetnextUrl].limit=true
+      return this.http.get<User_PlanetResponse>(this.PlanetnextUrl)
     }
 
     this.PlanetPageCount++
-    return this.http.get<User_PlanetResponse>(this.nextUrl).pipe(tap((data=>{
+    return this.http.get<User_PlanetResponse>(this.PlanetnextUrl).pipe(tap((data=>{
       console.log(data)
-      this.cache[this.nextUrl]=data
-      this.nextUrl= data.next
+      this.cache[this.PlanetnextUrl]=data
+      this.PlanetnextUrl= data.next
     })))
 
   }
@@ -126,7 +134,7 @@ export class StarWarsService {
     }
     return this.http.get<User_ShipResponse>(url).pipe(tap((data=>{
       this.cache[url]=data
-      this.nextUrl= data.next
+      this.StarnextUrl= data.next
     })))
   }
 
@@ -144,12 +152,12 @@ export class StarWarsService {
     const url = `${this.URL}/api/starships`
     if(this.StarPageCount===this.cache[url].total_pages-2){
       this.Starlimit=true
-      return this.http.get<User_ShipResponse>(this.nextUrl)
+      return this.http.get<User_ShipResponse>(this.StarnextUrl)
     }
     this.StarPageCount++
-    return this.http.get<User_ShipResponse>(this.nextUrl).pipe(tap((data=>{
-      this.cache[this.nextUrl]=data
-      this.nextUrl= data.next
+    return this.http.get<User_ShipResponse>(this.StarnextUrl).pipe(tap((data=>{
+      this.cache[this.StarnextUrl]=data
+      this.StarnextUrl= data.next
     })))
 
   }
