@@ -12,16 +12,11 @@
   <span>MGLT: {{ShipDetails?.MGLT}}</span>
   <span>Consumables: {{ShipDetails?.consumables}}</span>
   <span>Passengers: {{ShipDetails?.passengers}}</span>
-  <span>Pilots:</span>
-  @if (Pilot.length!=0) {
-    @for (pilot of Pilot; track $index) {
-      <app-details-component [uid]=Pilot[$index]></app-details-component>
-    }
-  }
+  <span>Pilots: {{ShipDetails?.pilots}}</span>
   <span>Crew: {{ShipDetails?.crew}}</span>
   <span>Created: {{ShipDetails?.created}}</span>
   <span>Edited: {{ShipDetails?.edited}}</span>
 
   <button mat-stroked-button routerLink="/home">Go to Home Page</button>
-  <button mat-stroked-button routerLink="/home/starships">Go to StarShips Page</button>
+  <button mat-stroked-button routerLink="home/starships">Go to StarShips Page</button>
 </div>

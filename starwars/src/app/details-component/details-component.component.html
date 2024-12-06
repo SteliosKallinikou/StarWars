@@ -1,20 +1,17 @@
+<h1>{{details?.name}}</h1>
 
-@if(prevUrl.includes("/starships")){
-  <span>{{details?.name}},</span>
-} @else {
-  <div class="wrapper">
-    <h1>{{details?.name}}</h1>
-    <span>Name: {{details?.name}}</span>
-    <span>Created: {{details?.created}}</span>
-    <span>Edited: {{details?.edited}}</span>
-    <span>Birth Year: {{details?.birth_year}}</span>
-    <span>Eye Color: {{details?.eye_color}}</span>
-    <span>Hair Color: {{details?.hair_color}}</span>
-    <span>Skin Color: {{details?.skin_color}}</span>
-    <span>Height: {{details?.height}}</span>
-    <span>Mass: {{details?.mass}}</span>
-    <a (click)="OpenHome(this.p_id)" routerLinkActive="active"> HomeWorld: {{details?.homeworld}}</a>
-    <button mat-stroked-button routerLink="/home">Back</button>
+<div class="wrapper">
+  <span>Name: {{details?.name}}</span>
+  <span>Created: {{details?.created}}</span>
+  <span>Edited: {{details?.edited}}</span>
+  <span>Birth Year: {{details?.birth_year}}</span>
+  <span>Eye Color: {{details?.eye_color}}</span>
+  <span>Hair Color: {{details?.hair_color}}</span>
+  <span>Skin Color: {{details?.skin_color}}</span>
+  <span>Height: {{details?.height}}</span>
+  <span>Mass: {{details?.mass}}</span>
+  <a (click)="OpenHome(this.p_id)" routerLinkActive="active"> HomeWorld: {{details?.homeworld}}</a>
+  <button mat-stroked-button routerLink="/home">Back</button>
 
-  </div>
-}
+
+</div>
