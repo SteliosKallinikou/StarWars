@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
 import {DetailsComponentComponent} from './details-component/details-component.component';
+import {AppCharactersComponent} from './app-characters/app-characters.component';
 import {HomeComponent} from './home/home.component';
-import {PlanetComponent} from './planet/planet.component';
-import {PlanetViewComponent} from './planet-view/planet-view.component';
 
 
 export const routes: Routes = [
@@ -18,14 +17,6 @@ export const routes: Routes = [
   {
     path: 'details/:uid',
     component: DetailsComponentComponent
-  },
-  {
-    path: 'planets/:id',
-    component: PlanetComponent
-  },
-  {
-    path:'planets',
-    component: PlanetViewComponent
   },
   {
     path: '**',

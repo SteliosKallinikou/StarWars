@@ -1,5 +1,4 @@
-export interface CharacterProperties {
-  name: string;
+export interface Properties {
   height: string;
   mass: string;
   hair_color: string;
@@ -9,22 +8,7 @@ export interface CharacterProperties {
   gender:string;
   created: string;
   edited: string;
+  name: string;
   homeworld:string;
   url: string;
-}
-
-export interface PlanetProperties{
-  name: string
-  climate: string;
-  diameter: string;
-  gravity: string;
-  created: string;
-  edited: string;
-  orbital_period: string;
-  rotation_period: string;
-  surface_water: string;
-  population: string;
-  url: string;
-
-
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import {MatTab, MatTabLink, MatTabNav} from '@angular/material/tabs';
+import {RouterOutlet} from '@angular/router';
+import {MatTab, MatTabGroup} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,10 +8,7 @@ import {MatTab, MatTabLink, MatTabNav} from '@angular/material/tabs';
   imports: [
     RouterOutlet,
     MatTab,
-    RouterLink,
-    RouterLinkActive,
-    MatTabNav,
-    MatTabLink
+    MatTabGroup
   ],
   templateUrl: './top-bar.component.html',
   styleUrl: './top-bar.component.scss'

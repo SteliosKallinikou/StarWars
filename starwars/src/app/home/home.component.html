@@ -1,12 +1,9 @@
-<h1>Star Wars Characters</h1>
 <div class="container">
   @for (person of people; track $index) {
     <app-app-characters [character]=person></app-app-characters>
   }
 </div>
 
-<div class="loading">
-  @if (isApploading) {
-    <mat-spinner ></mat-spinner>
-  }
-</div>
+@if (isApploading) {
+  <mat-spinner></mat-spinner>
+}
