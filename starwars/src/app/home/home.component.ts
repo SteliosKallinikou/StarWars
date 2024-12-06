@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {map} from 'rxjs';
+import {map,} from 'rxjs';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {StarWarsService} from '../service/star-wars.service';
 import {AppCharactersComponent} from '../app-characters/app-characters.component';

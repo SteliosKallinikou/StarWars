@@ -31,7 +31,7 @@ export class StarshipComponent implements OnInit{
 
   }
   ShowDetails(id:string){
-    this.router.navigate(['home/starships',id])
+    this.router.navigate(['/starships',id])
   }
 
 }
