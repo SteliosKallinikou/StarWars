@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import { MatTabLink, MatTabNav, MatTabNavPanel} from '@angular/material/tabs';
+import {MatTab, MatTabLink, MatTabNav} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-top-bar',
   standalone: true,
   imports: [
     RouterOutlet,
+    MatTab,
     RouterLink,
     RouterLinkActive,
     MatTabNav,
-    MatTabLink,
-    MatTabNavPanel
+    MatTabLink
   ],
   templateUrl: './top-bar.component.html',
   styleUrl: './top-bar.component.scss'
 })
 export class TopBarComponent {
-
 
 }

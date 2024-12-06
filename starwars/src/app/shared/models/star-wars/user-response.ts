@@ -4,22 +4,16 @@ import {CharacterProperties, PlanetProperties, ShipProperties} from './propertie
 export interface UserResponse {
   message: string;
   results: UsersResult[];
-  next: string;
-  total_pages:string;
 }
 
 export interface User_PlanetResponse{
   message: string;
   results: PlanetResult[]
-  next: string;
-  total_pages:string;
 }
 
 export interface User_ShipResponse{
   message: string;
   results: ShipResult[];
-  next: string;
-  total_pages:string;
 }
 
 export interface CharacterResponse {

@@ -38,9 +38,12 @@ export class StarshipDetailsComponent implements OnInit{
          for(let i=0; i<data.properties.pilots.length;i++)
          {
            this.Pilot[i]=data.properties?.pilots[i].substring(34)
+            console.log(this.Pilot[i])
          }
+         console.log(this.id)
        }
       }
     })
+
   }
 }

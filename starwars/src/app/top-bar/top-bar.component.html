@@ -1,12 +1,11 @@
 <div class="items">
-  <nav mat-tab-nav-bar [tabPanel]="tabpanel">
+  <nav mat-tab-nav-bar>
     <a mat-tab-link routerLink="/home" routerLinkActive><label>Star Wars Characters</label></a>
     <a mat-tab-link routerLink="home/planets"> <label>Star Wars Planets</label></a>
     <a mat-tab-link routerLink="home/starships"> <label>Star Wars StarShips</label> </a>
   </nav>
 </div>
 <div>
-  <mat-tab-nav-panel #tabpanel></mat-tab-nav-panel>
   <router-outlet/>
 </div>
 

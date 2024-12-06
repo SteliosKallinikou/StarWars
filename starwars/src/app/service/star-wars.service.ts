@@ -17,18 +17,14 @@ import {NavigationEnd, Router} from '@angular/router';
 export class StarWarsService {
   http = inject(HttpClient);
   URL = 'https://www.swapi.tech'
-  nextUrl:string=""
   private prevURL: string ="";
   private currURL: string="";
   private cache: { [key: string]: any } = {};
 
 
-
-  constructor(private readonly router:Router) {
+  constructor(http: HttpClient ,private router:Router) {
     this.currURL= this.prevURL
-    router.events.pipe(tap(()=>{
-
-    })).subscribe(event=>{
+    router.events.subscribe(event=>{
       if(event instanceof NavigationEnd){
         this.prevURL=this.currURL
         this.currURL=event.url;
@@ -43,21 +39,7 @@ export class StarWarsService {
     }
     return this.http.get<UserResponse>(url).pipe(tap((data=>{
       this.cache[url]=data
-      this.nextUrl= this.cache[url].next
     })))
-  }
-
-  getMoreUsers(): Observable<UserResponse> {
-    const url = `${this.URL}/api/people/`
-    if(this.cache[url].total_pages>10){
-      return of (this.cache[url].previous)
-    }
-
-    return this.http.get<UserResponse>(this.nextUrl).pipe(tap((data=>{
-      this.cache[this.nextUrl]=data
-      this.nextUrl= data.next
-    })))
-
   }
 
   getCharacterDetails(index: string | undefined): Observable<CharacterResponse>{
@@ -87,23 +69,8 @@ export class StarWarsService {
     }
     return this.http.get<User_PlanetResponse>(url).pipe(tap((data=>{
       this.cache[url]=data
-      this.nextUrl= this.cache[url].next
     })))
   }
-
-  getMorePlanets():Observable<User_PlanetResponse>{
-    const url = `${this.URL}/api/people/`
-    // if(this.cache[url].total_pages>10){
-    //   return of (this.cache[url].previous)
-    // }
-
-    return this.http.get<User_PlanetResponse>(this.nextUrl).pipe(tap((data=>{
-      this.cache[this.nextUrl]=data
-      this.nextUrl= data.next
-    })))
-
-  }
-
 
   getShips(): Observable<User_ShipResponse>{
     const url = `${this.URL}/api/starships`;
@@ -112,7 +79,6 @@ export class StarWarsService {
     }
     return this.http.get<User_ShipResponse>(url).pipe(tap((data=>{
       this.cache[url]=data
-      this.nextUrl= data.next
     })))
   }
 
@@ -125,20 +91,6 @@ export class StarWarsService {
       this.cache[url]=data
     })))
   }
-
-  getMoreStarShips():Observable<User_ShipResponse>{
-    const url = `${this.URL}/api/people/`
-    // if(this.cache[url].total_pages>10){
-    //   return of (this.cache[url].previous)
-    // }
-
-    return this.http.get<User_ShipResponse>(this.nextUrl).pipe(tap((data=>{
-      this.cache[this.nextUrl]=data
-      this.nextUrl= data.next
-    })))
-
-  }
-
 
   getPrevUrl():string{
     return this.currURL;
