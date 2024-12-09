@@ -3,24 +3,58 @@
 } @else {
   <div class="wrapper">
     <h1>{{ details?.name }}</h1>
-    <span>Name: {{ details?.name }}</span>
-    <span>Created: {{ details?.created }}</span>
-    <span>Edited: {{ details?.edited }}</span>
-    <span>Birth Year: {{ details?.birth_year }}</span>
-    <span>Eye Color: {{ details?.eye_color }}</span>
-    <span>Hair Color: {{ details?.hair_color }}</span>
-    <span>Skin Color: {{ details?.skin_color }}</span>
-    <span>Gender: {{ details?.gender }}</span>
-    <span>Height: {{ details?.height }}</span>
-    <span>Mass: {{ details?.mass }}</span>
-    <a (click)="OpenHome(this.p_id)" routerLinkActive="active">
-      HomeWorld: {{ details?.homeworld }}</a
-    >
+    <!-- TODO detail-container could be a shared component or styles could be in reusable.scss -->
+    <div class="detail-container">
+      <span>Name: </span>
+      <span>{{ details?.name }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Created: </span>
+      <span>{{ details?.created }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Edited: </span>
+      <span>{{ details?.edited }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Birth Year: </span>
+      <span>{{ details?.birth_year }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Eye Color: </span>
+      <span>{{ details?.eye_color }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Hair Color: </span>
+      <span>{{ details?.hair_color }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Skin Color: </span>
+      <span>{{ details?.skin_color }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Gender: </span>
+      <span>{{ details?.gender }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Height: </span>
+      <span>{{ details?.height }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Mass: </span>
+      <span>{{ details?.mass }}</span>
+    </div>
+    <!--    TODO should be a button-->
+    <!--  TODO in case you are using "a" tage please use cursor: pointer -->
+    <div class="detail-container">
+      <span>HomeWorld: </span>
+      <button mat-stroked-button (click)="OpenHome(this.p_id)">{{ details?.homeworld }}</button>
+    </div>
     <div class="loading">
       @if (isApploading) {
         <mat-spinner></mat-spinner>
       }
     </div>
-    <button mat-stroked-button routerLink="/home">Back</button>
+    <button class="back-button" mat-stroked-button routerLink="/home">Back</button>
   </div>
 }

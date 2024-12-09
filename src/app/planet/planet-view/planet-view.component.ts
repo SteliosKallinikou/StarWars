@@ -16,11 +16,14 @@ import { PlanetResult } from '../../shared/models';
 export class PlanetViewComponent implements OnInit {
   starWarsService = inject(StarWarsService);
   planets: PlanetResult[] = [];
+  //TODO should be camelCase
   isApploading = false;
 
   constructor(private router: Router) {}
 
+  // TODO missing type void
   ngOnInit() {
+    // TODO missing Unsubscribe
     this.isApploading = true;
     this.starWarsService
       .getPlanets()
@@ -35,11 +38,14 @@ export class PlanetViewComponent implements OnInit {
       });
   }
 
+  // TODO missing type void, camelCase and naming should be better -> onDetailsClick
   Details(id: string) {
     this.router.navigate(['home/planets', id]);
   }
 
+  // TODO missing type void, and camelCase
   LoadMore() {
+    // TODO missing Unsubscribe
     this.starWarsService.getMorePlanets().subscribe({
       next: data => {
         for (let i = 0; i < data.results.length; i++) {

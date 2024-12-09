@@ -13,12 +13,14 @@ import { CharacterComponent } from '../character/character.component';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
+  // TODO use camelCase for properties
   isApploading = false;
   starWarsService = inject(StarWarsService);
   people: UsersResult[] = [];
 
   ngOnInit(): void {
     this.isApploading = true;
+    // TODO missing Unsubscribe
     this.starWarsService.getUsers().subscribe({
       next: data => {
         this.people = data.results;
@@ -29,7 +31,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // TODO type void
   LoadMore() {
+    // TODO missing Unsubscribe
     this.starWarsService.getMoreUsers().subscribe({
       next: data => {
         for (let i = 0; i < data.results.length; i++) {

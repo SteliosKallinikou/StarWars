@@ -1,3 +1,5 @@
+// TODO should be SCSS way and more specific selectors
+
 .contain {
   width: 100%;
   display: inline-flex;
@@ -6,9 +8,11 @@
   align-items: center;
   gap: 8px;
 }
+
 h1 {
   text-align: center;
 }
+
 .planets {
   display: flex;
   flex-wrap: wrap;
@@ -27,9 +31,11 @@ h1 {
     flex-basis: calc(90% - 12px);
   }
 }
+
 button {
   min-width: 90%;
 }
+
 span {
   padding: 30px 0 20px 0;
   font-size: 15pt;
