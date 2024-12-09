@@ -47,7 +47,7 @@
     <!--    TODO should be a button-->
     <!--  TODO in case you are using "a" tage please use cursor: pointer -->
     <div class="detail-container">
-      <span>HomeWorld: </span>
+      <span>Home World: </span>
       <button mat-stroked-button (click)="OpenHome(this.p_id)">{{ details?.homeworld }}</button>
     </div>
     <div class="loading">
@@ -55,6 +55,6 @@
         <mat-spinner></mat-spinner>
       }
     </div>
-    <button class="back-button" mat-stroked-button routerLink="/home">Back</button>
+    <button class="back-button" mat-stroked-button routerLink="/characters">Back</button>
   </div>
 }

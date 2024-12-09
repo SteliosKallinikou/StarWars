@@ -40,7 +40,7 @@ export class PlanetViewComponent implements OnInit {
 
   // TODO missing type void, camelCase and naming should be better -> onDetailsClick
   Details(id: string) {
-    this.router.navigate(['home/planets', id]);
+    this.router.navigate(['/planets', id]);
   }
 
   // TODO missing type void, and camelCase

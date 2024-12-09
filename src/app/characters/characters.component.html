@@ -2,7 +2,7 @@
 <div class="wrap">
   <div class="container">
     @for (person of people; track person.uid) {
-      <app-character [character]="person"></app-character>
+      <app-character-card [character]="person"></app-character-card>
     }
   </div>
   <div class="load-more">

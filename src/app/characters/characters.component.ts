@@ -3,16 +3,16 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { UsersResult } from '../shared/models';
 import { MatButton } from '@angular/material/button';
 import { StarWarsService } from '../core/service';
-import { CharacterComponent } from '../character/character.component';
+import { CharacterCardComponent } from './character-card/character-card.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-characters',
   standalone: true,
-  imports: [MatProgressSpinner, MatButton, CharacterComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  imports: [MatProgressSpinner, MatButton, CharacterCardComponent],
+  templateUrl: './characters.component.html',
+  styleUrl: './characters.component.scss',
 })
-export class HomeComponent implements OnInit {
+export class CharactersComponent implements OnInit {
   // TODO use camelCase for properties
   isApploading = false;
   starWarsService = inject(StarWarsService);

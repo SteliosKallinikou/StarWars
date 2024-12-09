@@ -4,12 +4,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { ShipProperties } from '../../shared/models';
 import { StarWarsService } from '../../core/service';
-import { DetailsCardComponent } from '../../details-card/details-card.component';
+import { CharacterDetailsComponent } from '../../characters/characters-details/character-details.component';
 
 @Component({
   selector: 'app-star-ship-details',
   standalone: true,
-  imports: [MatButton, RouterLink, DetailsCardComponent],
+  imports: [MatButton, RouterLink, CharacterDetailsComponent],
   templateUrl: './star-ship-details.component.html',
   styleUrl: './star-ship-details.component.scss',
 })

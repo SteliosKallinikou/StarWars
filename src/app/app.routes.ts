@@ -1,44 +1,59 @@
 // TODO spacing
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { CharactersComponent } from './characters/characters.component';
 import { PlanetComponent } from './planet/planet.component';
 import { StarShipComponent } from './star-ship/star-ship.component';
-import { DetailsCardComponent } from './details-card/details-card.component';
 import { PlanetViewComponent } from './planet/planet-view/planet-view.component';
 import { StarShipDetailsComponent } from './star-ship/star-ship-details/star-ship-details.component';
+import { CharacterDetailsComponent } from './characters/characters-details/character-details.component';
 
 export const routes: Routes = [
   {
+    path: 'characters',
+    children: [
+      {
+        path: '',
+        component: CharactersComponent,
+      },
+      {
+        path: ':uid',
+        component: CharacterDetailsComponent,
+      },
+    ],
+  },
+  {
+    path: 'planets',
+    children: [
+      {
+        path: '',
+        component: PlanetViewComponent,
+      },
+      {
+        path: ':id',
+        component: PlanetComponent,
+      },
+    ],
+  },
+  {
+    path: 'starships',
+    children: [
+      {
+        path: '',
+        component: StarShipComponent,
+      },
+      {
+        path: ':id',
+        component: StarShipDetailsComponent,
+      },
+    ],
+  },
+  {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home',
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: 'home/details/:uid',
-    component: DetailsCardComponent,
-  },
-  {
-    path: 'home/planets/:id',
-    component: PlanetComponent,
-  },
-  {
-    path: 'home/planets',
-    component: PlanetViewComponent,
-  },
-  {
-    path: 'home/starships',
-    component: StarShipComponent,
-  },
-  {
-    path: 'home/starships/:id',
-    component: StarShipDetailsComponent,
+    redirectTo: 'characters',
   },
   {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: 'characters',
   },
 ];

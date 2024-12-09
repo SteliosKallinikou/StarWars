@@ -42,7 +42,7 @@ export class StarShipComponent implements OnInit {
 
   // TODO missing type void
   ShowDetails(id: string) {
-    this.router.navigate(['home/starships', id]);
+    this.router.navigate(['/starships', id]);
   }
 
   // TODO missing type void
