@@ -22,13 +22,13 @@
     <!-- TODO names are identical pilot of pilot req change -> pilot of pilots -->
     @for (pilot of pilot; track $index) {
       <!-- TODO unnecessary Pilot[$index] -->
-      <app-details-card [uid]="pilot"></app-details-card>
+      <app-character-details [uid]="pilot"></app-character-details>
     }
   }
   <span>Crew: {{ shipDetails?.crew }}</span>
   <span>Created: {{ shipDetails?.created }}</span>
   <span>Edited: {{ shipDetails?.edited }}</span>
 
-  <button mat-stroked-button routerLink="/home">Go to Home Page</button>
-  <button mat-stroked-button routerLink="/home/starships">Go to StarShips Page</button>
+  <button mat-stroked-button routerLink="/characters">Go to Home Page</button>
+  <button mat-stroked-button routerLink="/starships">Go to StarShips Page</button>
 </div>

@@ -2,12 +2,17 @@
 <div class="contain">
   <div class="planets">
     @for (planet of planets; track $index) {
-      <div class="items">
-        <span>{{ planet.name }}</span>
-        <button mat-stroked-button routerLinkActive="active" (click)="Details(planet.uid)">
-          Details
-        </button>
-      </div>
+      <app-item-card
+        [id]="planet?.uid"
+        [displayName]="planet?.name"
+        [navigateTo]="RouterLinks.PLANETS"
+      ></app-item-card>
+      <!--      <div class="items">-->
+      <!--        <span>{{ planet.name }}</span>-->
+      <!--        <button mat-stroked-button routerLinkActive="active" (click)="Details(planet.uid)">-->
+      <!--          Details-->
+      <!--        </button>-->
+      <!--      </div>-->
     }
   </div>
   <div>
