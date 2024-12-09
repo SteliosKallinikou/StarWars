@@ -10,7 +10,7 @@ export interface UserResponse {
   total_pages: number;
   total_records: number;
 }
-
+//TODO should be PascalCase
 export interface User_PlanetResponse {
   message: string;
   results: PlanetResult[];
@@ -19,6 +19,7 @@ export interface User_PlanetResponse {
   total_records: number;
 }
 
+//TODO should be PascalCase
 export interface User_ShipResponse {
   message: string;
   results: ShipResult[];

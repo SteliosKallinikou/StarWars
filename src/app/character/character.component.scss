@@ -17,7 +17,12 @@
 
     button {
       min-width: 90%;
-      background-color: transparent;
+      background-color: #000;
+
+      &:hover {
+        color: black;
+        background-color: var(--mdc-outlined-button-label-text-color);
+      }
     }
 
     span {

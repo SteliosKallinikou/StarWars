@@ -16,11 +16,14 @@
       // TODO
       // add width to elements it will prevent content from jumping
       transition: 1s;
-      color: yellow;
       // TODO
       // more scss way to write hover
+      // TODO you can override the default material variables
+      --mat-tab-header-inactive-label-text-color: yellow;
       &:hover {
         font-size: 20pt;
+        // TODO you can override the default material variables
+        --mat-tab-header-inactive-hover-label-text-color: yellow;
       }
     }
   }
