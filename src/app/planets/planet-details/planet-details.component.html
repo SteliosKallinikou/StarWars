@@ -16,8 +16,8 @@
     <button mat-stroked-button (click)="goBack()">Back to Character</button>
   }
   @if (prevUrl.includes('/planets')) {
-    <button mat-stroked-button routerLink="/home/planets">Back to Planets</button>
+    <button mat-stroked-button routerLink="/planets">Back to Planets</button>
   }
-  <button mat-stroked-button routerLink="/home">Go to Home Page</button>
+  <button mat-stroked-button routerLink="/characters">Go to Home Page</button>
   <router-outlet></router-outlet>
 </div>

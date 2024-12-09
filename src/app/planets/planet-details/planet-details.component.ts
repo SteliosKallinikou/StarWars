@@ -1,19 +1,19 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { map } from 'rxjs';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
-import { PlanetProperties } from '../shared/models';
+import { PlanetProperties } from '../../shared/models';
 import { MatButton } from '@angular/material/button';
 import { Location } from '@angular/common';
-import { StarWarsService } from '../core/service';
+import { StarWarsService } from '../../core/service';
 
 @Component({
-  selector: 'app-planet',
+  selector: 'app-planet-details',
   standalone: true,
   imports: [RouterOutlet, MatButton, RouterLink],
-  templateUrl: './planet.component.html',
-  styleUrl: './planet.component.scss',
+  templateUrl: './planet-details.component.html',
+  styleUrl: './planet-details.component.scss',
 })
-export class PlanetComponent implements OnInit {
+export class PlanetDetailsComponent implements OnInit {
   starWarsService = inject(StarWarsService);
   //TODO should be better naming for properties p_id -> planetId or id
   p_id: string | undefined;

@@ -1,20 +1,21 @@
 import { Component, inject, input, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
-import { StarWarsService } from '../core/service';
+import { StarWarsService } from '../../core/service';
 import { map } from 'rxjs';
-import { CharacterProperties } from '../shared/models';
+import { CharacterProperties } from '../../shared/models';
 import { MatButton } from '@angular/material/button';
 import { Location } from '@angular/common';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { RouterLinks } from '../../shared/enums';
 
 @Component({
-  selector: 'app-details-card',
+  selector: 'app-character-details',
   standalone: true,
   imports: [RouterLink, MatButton, MatProgressSpinner],
-  templateUrl: './details-card.component.html',
-  styleUrl: './details-card.component.scss',
+  templateUrl: './character-details.component.html',
+  styleUrl: './character-details.component.scss',
 })
-export class DetailsCardComponent implements OnInit {
+export class CharacterDetailsComponent implements OnInit {
   uid = input<string>();
   starWarsService = inject(StarWarsService);
   details: CharacterProperties | undefined;
@@ -51,6 +52,6 @@ export class DetailsCardComponent implements OnInit {
   }
   // TODO use camelCase for methods -> openHome or better name onHomeClick
   OpenHome(id: string | undefined): void {
-    this.router.navigate(['home/planets', id]);
+    this.router.navigate(['/' + RouterLinks.PLANETS, id]);
   }
 }

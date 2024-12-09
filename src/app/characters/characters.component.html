@@ -2,7 +2,11 @@
 <div class="wrap">
   <div class="container">
     @for (person of people; track person.uid) {
-      <app-character [character]="person"></app-character>
+      <app-item-card
+        [id]="person?.uid"
+        [displayName]="person?.name"
+        [navigateTo]="RouterLinks.CHARACTERS"
+      ></app-item-card>
     }
   </div>
   <div class="load-more">

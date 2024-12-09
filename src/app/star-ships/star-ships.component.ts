@@ -4,23 +4,23 @@ import { StarWarsService } from '../core/service';
 import { ShipResult } from '../shared/models';
 import { map } from 'rxjs';
 import { MatButton } from '@angular/material/button';
-import { Router, RouterLinkActive } from '@angular/router';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { RouterLinks } from '../shared/enums';
+import { ItemCardComponent } from '../shared/components';
 
 @Component({
-  selector: 'app-star-ship',
+  selector: 'app-star-ships',
   standalone: true,
-  imports: [MatButton, RouterLinkActive, MatProgressSpinner],
-  templateUrl: './star-ship.component.html',
-  styleUrl: './star-ship.component.scss',
+  imports: [MatButton, MatProgressSpinner, ItemCardComponent],
+  templateUrl: './star-ships.component.html',
+  styleUrl: './star-ships.component.scss',
 })
-export class StarShipComponent implements OnInit {
+export class StarShipsComponent implements OnInit {
+  protected readonly RouterLinks = RouterLinks;
   starWarsService = inject(StarWarsService);
-  starships: ShipResult[] = [];
+  starShips: ShipResult[] = [];
   // TODO use camelCase for properties
   isAppLoading = false;
-
-  constructor(private router: Router) {}
 
   // TODO missing type void
   ngOnInit() {
@@ -32,7 +32,7 @@ export class StarShipComponent implements OnInit {
       .pipe(map(result => result.results))
       .subscribe({
         next: data => {
-          this.starships = data;
+          this.starShips = data;
         },
         complete: () => {
           this.isAppLoading = false;
@@ -40,10 +40,10 @@ export class StarShipComponent implements OnInit {
       });
   }
 
-  // TODO missing type void
-  ShowDetails(id: string) {
-    this.router.navigate(['home/starships', id]);
-  }
+  // // TODO missing type void
+  // ShowDetails(id: string) {
+  //   this.router.navigate(['/' + RouterLinks.STAR_SHIPS, id]);
+  // }
 
   // TODO missing type void
   LoadMore() {
@@ -57,7 +57,7 @@ export class StarShipComponent implements OnInit {
       //   ).subscribe();
       next: data => {
         for (let i = 0; i < data.results.length; i++) {
-          this.starships.push(data.results[i]);
+          this.starShips.push(data.results[i]);
         }
       },
     });

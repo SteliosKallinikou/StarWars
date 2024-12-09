@@ -1,44 +1,60 @@
 // TODO spacing
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { PlanetComponent } from './planet/planet.component';
-import { StarShipComponent } from './star-ship/star-ship.component';
-import { DetailsCardComponent } from './details-card/details-card.component';
-import { PlanetViewComponent } from './planet/planet-view/planet-view.component';
-import { StarShipDetailsComponent } from './star-ship/star-ship-details/star-ship-details.component';
+import { CharactersComponent } from './characters/characters.component';
+import { PlanetsComponent } from './planets/planets.component';
+import { StarShipsComponent } from './star-ships/star-ships.component';
+import { StarShipDetailsComponent } from './star-ships/star-ship-details/star-ship-details.component';
+import { CharacterDetailsComponent } from './characters/characters-details/character-details.component';
+import { RouterLinks } from './shared/enums';
+import { PlanetDetailsComponent } from './planets/planet-details/planet-details.component';
 
 export const routes: Routes = [
   {
+    path: RouterLinks.CHARACTERS,
+    children: [
+      {
+        path: '',
+        component: CharactersComponent,
+      },
+      {
+        path: ':uid',
+        component: CharacterDetailsComponent,
+      },
+    ],
+  },
+  {
+    path: RouterLinks.PLANETS,
+    children: [
+      {
+        path: '',
+        component: PlanetsComponent,
+      },
+      {
+        path: ':id',
+        component: PlanetDetailsComponent,
+      },
+    ],
+  },
+  {
+    path: RouterLinks.STAR_SHIPS,
+    children: [
+      {
+        path: '',
+        component: StarShipsComponent,
+      },
+      {
+        path: ':id',
+        component: StarShipDetailsComponent,
+      },
+    ],
+  },
+  {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home',
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: 'home/details/:uid',
-    component: DetailsCardComponent,
-  },
-  {
-    path: 'home/planets/:id',
-    component: PlanetComponent,
-  },
-  {
-    path: 'home/planets',
-    component: PlanetViewComponent,
-  },
-  {
-    path: 'home/starships',
-    component: StarShipComponent,
-  },
-  {
-    path: 'home/starships/:id',
-    component: StarShipDetailsComponent,
+    redirectTo: RouterLinks.CHARACTERS,
   },
   {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: RouterLinks.CHARACTERS,
   },
 ];

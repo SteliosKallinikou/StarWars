@@ -1,19 +1,22 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { map } from 'rxjs';
 import { MatButton } from '@angular/material/button';
-import { Router, RouterLinkActive } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { StarWarsService } from '../../core/service';
-import { PlanetResult } from '../../shared/models';
+import { StarWarsService } from '../core/service';
+import { PlanetResult } from '../shared/models';
+import { RouterLinks } from '../shared/enums';
+import { ItemCardComponent } from '../shared/components';
 
 @Component({
-  selector: 'app-planet-view',
+  selector: 'app-planets',
   standalone: true,
-  imports: [MatButton, RouterLinkActive, MatProgressSpinner],
-  templateUrl: './planet-view.component.html',
-  styleUrl: './planet-view.component.scss',
+  imports: [MatButton, MatProgressSpinner, ItemCardComponent],
+  templateUrl: './planets.component.html',
+  styleUrl: './planets.component.scss',
 })
-export class PlanetViewComponent implements OnInit {
+export class PlanetsComponent implements OnInit {
+  protected readonly RouterLinks = RouterLinks;
   starWarsService = inject(StarWarsService);
   planets: PlanetResult[] = [];
   //TODO should be camelCase
@@ -38,10 +41,10 @@ export class PlanetViewComponent implements OnInit {
       });
   }
 
-  // TODO missing type void, camelCase and naming should be better -> onDetailsClick
-  Details(id: string) {
-    this.router.navigate(['home/planets', id]);
-  }
+  // // TODO missing type void, camelCase and naming should be better -> onDetailsClick
+  // Details(id: string) {
+  //   this.router.navigate(['/' + RouterLinks.PLANETS, id]);
+  // }
 
   // TODO missing type void, and camelCase
   LoadMore() {
