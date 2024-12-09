@@ -3,7 +3,7 @@
 
   <div class="container">
     @for (person of people; track person.uid) {
-      <app-app-characters [character]=person></app-app-characters>
+      <app-character [character]=person></app-character>
     }
   </div>
   <div class="load-more">
