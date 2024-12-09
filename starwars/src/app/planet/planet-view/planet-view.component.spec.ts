@@ -8,9 +8,8 @@ describe('PlanetViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PlanetViewComponent]
-    })
-    .compileComponents();
+      imports: [PlanetViewComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PlanetViewComponent);
     component = fixture.componentInstance;

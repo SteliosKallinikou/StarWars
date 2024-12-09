@@ -1,4 +1,4 @@
-@use "variables";
+@use 'variables';
 
 // TODO
 // Not the best way to apply styles with *
@@ -24,6 +24,3 @@
   // in case you want to change the value of the variable you can do it in one place
   gap: variables.$medium-plus;
 }
-
-
-

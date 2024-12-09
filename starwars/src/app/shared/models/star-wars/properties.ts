@@ -6,14 +6,14 @@ export interface CharacterProperties {
   skin_color: string;
   eye_color: string;
   birth_year: string;
-  gender:string;
+  gender: string;
   created: string;
   edited: string;
-  homeworld:string;
+  homeworld: string;
   url: string;
 }
 
-export interface PlanetProperties{
+export interface PlanetProperties {
   name: string;
   climate: string;
   diameter: string;
@@ -27,7 +27,7 @@ export interface PlanetProperties{
   url: string;
 }
 
-export interface ShipProperties{
+export interface ShipProperties {
   model: string;
   starship_class: string;
   manufacturer: string;

@@ -1,5 +1,4 @@
-
-.contain{
+.contain {
   width: 100%;
   display: inline-flex;
   justify-content: center;
@@ -7,17 +6,17 @@
   align-items: center;
   gap: 8px;
 }
-h1{
+h1 {
   text-align: center;
 }
-.planets{
+.planets {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 24px 12px;
 }
 
-.planets > div{
+.planets > div {
   flex: 1 1 calc(50% - 12px);
   display: flex;
   flex-direction: column;
@@ -28,23 +27,21 @@ h1{
     flex-basis: calc(90% - 12px);
   }
 }
-button{
+button {
   min-width: 90%;
 }
-span{
+span {
   padding: 30px 0 20px 0;
   font-size: 15pt;
 }
 
-label{
+label {
   border: 1px solid grey;
   border-radius: 100px;
   padding: 10px 10px 10px 10px;
 }
-.load{
+.load {
   display: flex;
   align-items: center;
   margin: 24px 0;
 }
-
-

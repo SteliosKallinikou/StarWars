@@ -3,23 +3,23 @@
   <div class="planets">
     @for (planet of planets; track $index) {
       <div class="items">
-        <span>{{planet.name}}</span>
-        <button mat-stroked-button  routerLinkActive="active" (click)="Details(planet.uid)">Details</button>
+        <span>{{ planet.name }}</span>
+        <button mat-stroked-button routerLinkActive="active" (click)="Details(planet.uid)">
+          Details
+        </button>
       </div>
     }
   </div>
   <div>
     @if (isApploading) {
-      <mat-spinner ></mat-spinner>
+      <mat-spinner></mat-spinner>
     }
   </div>
   <div class="load">
-    @if (!this.starWarsService.getPlanetLimit()){
+    @if (!this.starWarsService.getPlanetLimit()) {
       <button class="load" mat-stroked-button (click)="LoadMore()">Load More Planets</button>
     } @else {
       <label>You Have Reached The Maximum StarWars Planets that are available</label>
     }
   </div>
-
 </div>
-

@@ -1,8 +1,7 @@
-h1{
+h1 {
   text-align: center;
-
 }
-.container{
+.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -15,16 +14,16 @@ h1{
   margin: 24px 0;
 }
 
-.wrap{
+.wrap {
   justify-items: center;
 }
 
-.loading{
+.loading {
   display: flex;
   justify-content: center;
 }
 
-label{
+label {
   border: 1px solid grey;
   border-radius: 100px;
   padding: 10px 10px 10px 10px;

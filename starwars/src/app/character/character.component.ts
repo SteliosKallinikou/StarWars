@@ -6,22 +6,17 @@ import { UsersResult } from '../shared/models';
 @Component({
   selector: 'app-character',
   standalone: true,
-  imports: [
-    MatButton,
-    RouterLinkActive
-  ],
+  imports: [MatButton, RouterLinkActive],
   templateUrl: './character.component.html',
-  styleUrl: './character.component.scss'
+  styleUrl: './character.component.scss',
 })
 export class CharacterComponent {
   protected readonly length = length;
-  character= input.required<UsersResult>();
+  character = input.required<UsersResult>();
 
-  constructor(private  router:Router) {
-  }
+  constructor(private router: Router) {}
 
   openDetails(): void {
-    this.router.navigate(['home/details', this.character()?.uid])
+    this.router.navigate(['home/details', this.character()?.uid]);
   }
 }
-
