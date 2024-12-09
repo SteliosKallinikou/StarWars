@@ -16,6 +16,7 @@
     }
   </div>
   <div class="load">
+    <!--  TODO user can click load more during isApploading it can cause unexpected errors-->
     @if (!this.starWarsService.getPlanetLimit()) {
       <button class="load" mat-stroked-button (click)="LoadMore()">Load More Planets</button>
     } @else {

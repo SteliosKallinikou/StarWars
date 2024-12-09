@@ -48,6 +48,7 @@ export class StarShipDetailsComponent implements OnInit {
               // TODO
               // don't use magick numbers better use const or enum
               // better approach use regex to get id in case your url will change
+              // const idMatch = pilotUrl.match(/\/(\d+)$/);
               // you may get unexpected results
               this.pilot[i] = data.properties?.pilots[i].substring(34);
             }

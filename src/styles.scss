@@ -11,14 +11,15 @@
 // Define the theme object.
 $starwars-theme: mat.define-theme(
   (
+    // TOD you also can create your own color palette
     color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
+        theme-type: dark,
+        primary: mat.$yellow-palette,
+        tertiary: mat.$blue-palette,
+      ),
     density: (
       scale: 0,
-    ),
+    )
   )
 );
 
@@ -31,9 +32,9 @@ $starwars-theme: mat.define-theme(
 
 // TODO
 // Not the best way to apply styles with *
-* {
-  color: yellow;
-}
+//* {
+//  //color: yellow;
+//}
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
 // For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
@@ -44,6 +45,8 @@ $starwars-theme: mat.define-theme(
 
 html,
 body {
+  // TODO Better use color here, it will be essayer to override it later
+  color: yellow;
   height: 100%;
 }
 
