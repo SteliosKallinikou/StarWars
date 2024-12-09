@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { StarWarsService } from '../service/star-wars.service';
 import { map } from 'rxjs';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ShipProperties } from '../shared/models';
 import { MatButton } from '@angular/material/button';
-import { DetailsComponentComponent } from '../details-component/details-component.component';
+import {ShipProperties} from '../../shared/models';
+import {StarWarsService} from '../../core/service';
+import {DetailsCardComponent} from '../../details-card/details-card.component';
 
 @Component({
   selector: 'app-starship-details',
@@ -12,7 +12,7 @@ import { DetailsComponentComponent } from '../details-component/details-componen
   imports: [
     MatButton,
     RouterLink,
-    DetailsComponentComponent
+    DetailsCardComponent
   ],
   templateUrl: './starship-details.component.html',
   styleUrl: './starship-details.component.scss'

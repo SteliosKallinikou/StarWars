@@ -1,10 +1,10 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {StarWarsService} from '../service/star-wars.service';
-import { PlanetResult} from '../shared/models';
 import {map} from 'rxjs';
 import {MatButton} from '@angular/material/button';
 import {Router, RouterLinkActive} from '@angular/router';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {StarWarsService} from '../../core/service';
+import {PlanetResult} from '../../shared/models';
 
 @Component({
   selector: 'app-planet-view',

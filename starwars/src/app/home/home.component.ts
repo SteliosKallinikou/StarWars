@@ -1,19 +1,17 @@
 import {Component,  inject, OnInit} from '@angular/core';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
-import {StarWarsService} from '../service/star-wars.service';
-import {AppCharactersComponent} from '../app-characters/app-characters.component';
 import {UsersResult} from '../shared/models';
 import {MatButton} from '@angular/material/button';
-
-
+import {StarWarsService} from '../core/service';
+import {CharacterComponent} from '../character/character.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     MatProgressSpinner,
-    AppCharactersComponent,
     MatButton,
+    CharacterComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

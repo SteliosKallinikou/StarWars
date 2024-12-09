@@ -8,7 +8,7 @@ import {
   User_PlanetResponse,
   User_ShipResponse,
   UserResponse
-} from '../shared/models';
+} from '../../shared/models';
 import {NavigationEnd, Router} from '@angular/router';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 

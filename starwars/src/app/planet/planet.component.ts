@@ -1,11 +1,10 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {StarWarsService} from '../service/star-wars.service';
 import {map} from 'rxjs';
 import {ActivatedRoute, RouterLink, RouterOutlet} from '@angular/router';
 import {PlanetProperties} from '../shared/models';
 import {MatButton} from '@angular/material/button';
 import {Location} from '@angular/common';
-
+import {StarWarsService} from '../core/service';
 
 @Component({
   selector: 'app-planet',

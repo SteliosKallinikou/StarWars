@@ -16,12 +16,12 @@
   <span>Consumables: {{shipDetails?.consumables}}</span>
   <span>Passengers: {{shipDetails?.passengers}}</span>
   <span>Pilots:</span>
-  <!-- TODO unnecessary !=0 could be @if (pilot.length) { -->
+  <!-- TODO unnecessary !=0 could be @if (pilot?.length) { -->
   @if (pilot.length!=0) {
   <!-- TODO names are identical pilot of pilot req change -> pilot of pilots -->
     @for (pilot of pilot; track $index) {
     <!-- TODO unnecessary Pilot[$index] -->
-      <app-details-component [uid]=pilot></app-details-component>
+      <app-details-card [uid]=pilot></app-details-card>
     }
   }
   <span>Crew: {{shipDetails?.crew}}</span>

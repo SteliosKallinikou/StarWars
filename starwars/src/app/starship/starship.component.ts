@@ -1,6 +1,6 @@
 // TODO formatting and spacing
 import {Component,inject,OnInit} from '@angular/core';
-import {StarWarsService} from '../service/star-wars.service';
+import {StarWarsService} from '../core/service';
 import {ShipResult} from '../shared/models';
 import {map} from 'rxjs';
 import {MatButton} from '@angular/material/button';

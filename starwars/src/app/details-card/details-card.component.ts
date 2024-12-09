@@ -1,6 +1,6 @@
 import {Component, inject, input, OnInit} from '@angular/core';
 import {RouterLink, Router, RouterLinkActive} from '@angular/router';
-import {StarWarsService} from '../service/star-wars.service';
+import {StarWarsService} from '../core/service';
 import {map} from 'rxjs';
 import {CharacterProperties} from '../shared/models';
 import {MatButton} from '@angular/material/button';
@@ -8,7 +8,7 @@ import {Location} from '@angular/common';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 
 @Component({
-  selector: 'app-details-component',
+  selector: 'app-details-card',
   standalone: true,
   imports: [
     RouterLink,
@@ -16,10 +16,10 @@ import {MatProgressSpinner} from '@angular/material/progress-spinner';
     RouterLinkActive,
     MatProgressSpinner,
   ],
-  templateUrl: './details-component.component.html',
-  styleUrl: './details-component.component.scss'
+  templateUrl: './details-card.component.html',
+  styleUrl: './details-card.component.scss'
 })
-export class DetailsComponentComponent implements OnInit {
+export class DetailsCardComponent implements OnInit {
   uid = input<string>()
   starWarsService = inject(StarWarsService);
   details: CharacterProperties | undefined
