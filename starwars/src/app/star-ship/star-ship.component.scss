@@ -3,7 +3,7 @@
 // also more specific classes
 // Also formatting and spacing should be added to make the code more readable
 
-.contain{
+.contain {
   width: 100%;
   display: inline-flex;
   justify-content: center;
@@ -11,7 +11,7 @@
   align-items: center;
   gap: 8px;
 
-  .ships{
+  .ships {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -31,28 +31,25 @@
   }
 }
 // TODO Use more specific selectors like .title
-h1{
+h1 {
   text-align: center;
 }
 
-button{
+button {
   min-width: 90%;
 }
-span{
+span {
   padding: 30px 0 20px 0;
   font-size: 15pt;
 }
 
-label{
+label {
   border: 1px solid grey;
   border-radius: 100px;
   padding: 10px 10px 10px 10px;
 }
-.load{
+.load {
   display: flex;
   align-items: center;
   margin: 24px 0;
 }
-
-
-
