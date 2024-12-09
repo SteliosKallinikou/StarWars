@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TopBarComponent } from './top-bar.component';
+import { DetailsCardComponent } from './details-card.component';
 
-describe('DashbosrdComponent', () => {
-  let component: TopBarComponent;
-  let fixture: ComponentFixture<TopBarComponent>;
+describe('DetailsComponentComponent', () => {
+  let component: DetailsCardComponent;
+  let fixture: ComponentFixture<DetailsCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TopBarComponent]
+      imports: [DetailsCardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TopBarComponent);
+    fixture = TestBed.createComponent(DetailsCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
