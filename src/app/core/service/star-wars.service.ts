@@ -20,9 +20,6 @@ export class StarWarsService {
   http = inject(HttpClient);
   cacheService = inject(CacheService);
 
-  //TODO we don't need empty constructor it could be removed
-  constructor() {}
-
   getCharacters(): Observable<CharactersResponse> {
     const url = `${this.URL}/api/people/`;
     const cache = this.cacheService.getFromCache('characters');

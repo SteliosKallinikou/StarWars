@@ -1,74 +1,75 @@
 <div class="wrapper">
   @if (shipDetails$ | async; as details) {
-    <h1>{{ details.name }}</h1>
+    <h1 class="title">{{ details.name || " " }}</h1>
 
     <div class="detail-container">
       <span>Name: </span>
-      <span>{{ details?.name }}</span>
+      <span>{{ details?.name || " " }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Model: </span>
+      <span>{{ details?.model || " " }}</span>
     </div>
     <div class="detail-container">
       <span>Created: </span>
-      <span>{{ details?.model }}</span>
+      <span>{{ details?.created || " " }}</span>
     </div>
     <div class="detail-container">
       <span>Edited: </span>
-      <span>{{ details?.created }}</span>
+      <span>{{ details?.edited || " "}}</span>
     </div>
     <div class="detail-container">
-      <span>Birth Year: </span>
-      <span>{{ details?.edited }}</span>
+      <span>Crew: </span>
+      <span>{{ details?.crew || " " }}</span>
     </div>
     <div class="detail-container">
-      <span>Eye Color: </span>
-      <span>{{ details?.crew }}</span>
+      <span>Cargo Capacity: </span>
+      <span>{{ details?.cargo_capacity || " " }}</span>
     </div>
     <div class="detail-container">
-      <span>Hair Color: </span>
-      <span>{{ details?.cargo_capacity }}</span>
+      <span>Consumables: </span>
+      <span>{{ details?.consumables || " " }}</span>
     </div>
     <div class="detail-container">
-      <span>Skin Color: </span>
-      <span>{{ details?.consumables }}</span>
+      <span>Const In Credits: </span>
+      <span>{{ details?.cost_in_credits || " " }}</span>
     </div>
     <div class="detail-container">
-      <span>Gender: </span>
-      <span>{{ details?.cost_in_credits }}</span>
+      <span>Hyperdrive Rating: </span>
+      <span>{{ details?.hyperdrive_rating || " " }}</span>
     </div>
     <div class="detail-container">
-      <span>Height: </span>
-      <span>{{ details?.hyperdrive_rating }}</span>
+      <span>Length: </span>
+      <span>{{ details?.length || " " }}</span>
     </div>
     <div class="detail-container">
-      <span>Mass: </span>
-      <span>{{ details?.length }}</span>
+      <span>Manufacturer: </span>
+      <span>{{ details?.manufacturer || " " }}</span>
     </div>
     <div class="detail-container">
-      <span>Mass: </span>
-      <span>{{ details?.manufacturer }}</span>
+      <span>Max Atmospheric Speed: </span>
+      <span>{{ details?.max_atmosphering_speed || " " }}</span>
     </div>
     <div class="detail-container">
-      <span>Mass: </span>
-      <span>{{ details?.max_atmosphering_speed }}</span>
+      <span>MGLT: </span>
+      <span>{{ details?.MGLT || " " }}</span>
     </div>
     <div class="detail-container">
-      <span>Mass: </span>
-      <span>{{ details?.MGLT }}</span>
+      <span>Passengers: </span>
+      <span>{{ details?.passengers || " " }}</span>
     </div>
     <div class="detail-container">
-      <span>Mass: </span>
-      <span>{{ details?.passengers }}</span>
-    </div>
-    <div class="detail-container">
-      <span>Mass: </span>
-      <span>{{ details?.starship_class }}</span>
+      <span>StarShip Class: </span>
+      <span>{{ details?.starship_class || " " }}</span>
     </div>
     @if (pilots.length !== 0) {
+      <span>Pilots: </span>
       @for (pilot of pilots; track $index) {
         <app-character-details [id]="pilot"></app-character-details>
       }
     } @else {
       <div class="detail-container">
-        <span>Mass: </span>
+        <span>Pilots: </span>
         <span>No Pilots Found</span>
       </div>
     }
@@ -78,7 +79,7 @@
     </button>
   }
   <div class="loading">
-    @if (isApploading) {
+    @if (isAppLoading) {
       <mat-spinner></mat-spinner>
     }
   </div>

@@ -1,16 +1,9 @@
 @use 'variables';
 
-// TODO use more specific selectors like .title
-h1 {
-  text-align: center;
-}
-
-// TODO use scss variables
 .wrapper {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  // TODO unnecessary padding: 20px 20px 20px 20px could be simplified to padding: 20px;
-  padding: variables.$padding;
-  gap: 10px;
+  text-align: center;;
+  padding: variables.$medium-plus;
+  gap: variables.$small-plus
 }

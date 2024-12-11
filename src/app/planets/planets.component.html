@@ -1,4 +1,4 @@
-<h1>Star Wars: Planets</h1>
+<h1 class="title">Star Wars: Planets</h1>
 <div class="wrap">
   <div class="container">
     @for (planet of planets; track planet.uid) {
@@ -10,11 +10,11 @@
     }
   </div>
   <div class="load-more">
-    @if (!isApploading && isLoadMoreAvailable) {
+    @if (!isAppLoading && isLoadMoreAvailable) {
       <button class="load" mat-stroked-button (click)="LoadMore()">Load More Planets</button>
     }
 
-    @if (isApploading) {
+    @if (isAppLoading) {
       <div class="loading">
         <mat-spinner></mat-spinner>
       </div>

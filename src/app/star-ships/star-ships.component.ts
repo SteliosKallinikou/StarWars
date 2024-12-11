@@ -19,15 +19,13 @@ export class StarShipsComponent implements OnInit {
   protected readonly RouterLinks = RouterLinks;
 
   isLoadMoreAvailable = false;
-  // TODO use camelCase for properties !!!
-  isApploading = false;
+  isAppLoading = false;
   starWarsService = inject(StarWarsService);
   destroyRef = inject(DestroyRef);
   starShips: ShipResult[] = [];
 
   ngOnInit(): void {
-    this.isApploading = true;
-    // TODO missing Unsubscribe
+    this.isAppLoading = true;
     this.starWarsService
       .getShips()
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -37,7 +35,7 @@ export class StarShipsComponent implements OnInit {
           this.starShips = data.results;
         },
         complete: () => {
-          this.isApploading = false;
+          this.isAppLoading = false;
         },
       });
   }

@@ -1,47 +1,47 @@
 <div class="wrapper">
   @if (planetDetails$ | async; as details) {
-    <h1>{{ details.name }}</h1>
+    <h1 class="title">{{ details.name }}</h1>
     <div class="detail-container">
       <!--   TODO I thin it would not be nice for a user to see -> Name: undefined  -->
       <!--   TODO lets add a default value  details?.name || '' or something like that  -->
       <span>Name: </span>
-      <span>{{ details?.name }}</span>
+      <span>{{ details?.name || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Created: </span>
-      <span>{{ details?.created }}</span>
+      <span>{{ details?.created || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Edited: </span>
-      <span>{{ details?.edited }}</span>
+      <span>{{ details?.edited || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Birth Year: </span>
-      <span>{{ details?.climate }}</span>
+      <span>{{ details?.climate || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Eye Color: </span>
-      <span>{{ details?.diameter }}</span>
+      <span>{{ details?.diameter || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Hair Color: </span>
-      <span>{{ details?.gravity }}</span>
+      <span>{{ details?.gravity || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Skin Color: </span>
-      <span>{{ details?.orbital_period }}</span>
+      <span>{{ details?.orbital_period || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Gender: </span>
-      <span>{{ details?.population }}</span>
+      <span>{{ details?.population || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Height: </span>
-      <span>{{ details?.rotation_period }}</span>
+      <span>{{ details?.rotation_period || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Mass: </span>
-      <span>{{ details?.surface_water }}</span>
+      <span>{{ details?.surface_water || "Not Found" }}</span>
     </div>
     <button mat-stroked-button routerLink="/characters">Go to Home Page</button>
     <button class="back-button" mat-stroked-button (click)="goBack()">
@@ -49,7 +49,7 @@
     </button>
   }
   <div class="loading">
-    @if (isApploading) {
+    @if (isAppLoading) {
       <mat-spinner></mat-spinner>
     }
   </div>

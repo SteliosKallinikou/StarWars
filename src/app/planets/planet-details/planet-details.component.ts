@@ -1,6 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { PlanetProperties } from '../../shared/models';
 import { MatButton } from '@angular/material/button';
 import { AsyncPipe, Location } from '@angular/common';
@@ -16,22 +16,20 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 })
 export class PlanetDetailsComponent implements OnInit {
   starWarsService = inject(StarWarsService);
-  planetId: string | undefined;
-  route: ActivatedRoute = inject(ActivatedRoute);
+  location = inject(Location);
+  id = input<string>();
   planetDetails$: Observable<PlanetProperties>;
   // TODO camelCase for isApploading -> isAppLoading
-  isApploading = false;
-
-  constructor(private location: Location) {}
+  isAppLoading = false;
 
   ngOnInit(): void {
-    this.isApploading = true;
+    this.isAppLoading = true;
+    console.log(this.id());
     //TODO we can use input like   id = input<string>();
-    this.planetId = this.route.snapshot.params['id'];
-    this.planetDetails$ = this.starWarsService.getPlanetDetails(this.planetId).pipe(
+    this.planetDetails$ = this.starWarsService.getPlanetDetails(this.id()).pipe(
       map(properties => properties.result.properties),
       tap(() => {
-        this.isApploading = false;
+        this.isAppLoading = false;
       })
     );
   }
