@@ -1,60 +1,61 @@
-@if (currURL.includes('/starships')) {
-  <span>{{ details?.name }},</span>
-} @else {
+<!--@if (currURL.includes('/starships')) {-->
+<!--  <span>{{ details?.name }},</span>-->
+<!--} @else {-->
   <div class="wrapper">
-    <h1>{{ details?.name }}</h1>
-    <!-- TODO detail-container could be a shared component or styles could be in reusable.scss -->
-    <div class="detail-container">
-      <span>Name: </span>
-      <span>{{ details?.name }}</span>
-    </div>
-    <div class="detail-container">
-      <span>Created: </span>
-      <span>{{ details?.created }}</span>
-    </div>
-    <div class="detail-container">
-      <span>Edited: </span>
-      <span>{{ details?.edited }}</span>
-    </div>
-    <div class="detail-container">
-      <span>Birth Year: </span>
-      <span>{{ details?.birth_year }}</span>
-    </div>
-    <div class="detail-container">
-      <span>Eye Color: </span>
-      <span>{{ details?.eye_color }}</span>
-    </div>
-    <div class="detail-container">
-      <span>Hair Color: </span>
-      <span>{{ details?.hair_color }}</span>
-    </div>
-    <div class="detail-container">
-      <span>Skin Color: </span>
-      <span>{{ details?.skin_color }}</span>
-    </div>
-    <div class="detail-container">
-      <span>Gender: </span>
-      <span>{{ details?.gender }}</span>
-    </div>
-    <div class="detail-container">
-      <span>Height: </span>
-      <span>{{ details?.height }}</span>
-    </div>
-    <div class="detail-container">
-      <span>Mass: </span>
-      <span>{{ details?.mass }}</span>
-    </div>
-    <!--    TODO should be a button-->
-    <!--  TODO in case you are using "a" tage please use cursor: pointer -->
-    <div class="detail-container">
-      <span>Home World: </span>
-      <button mat-stroked-button (click)="OpenHome(this.p_id)">{{ details?.homeworld }}</button>
-    </div>
+    @if (details$ | async; as details){
+      <h1>{{ details.name }}</h1>
+      <!-- TODO detail-container could be a shared component or styles could be in reusable.scss -->
+      <div class="detail-container">
+        <span>Name: </span>
+        <span>{{ details?.name }}</span>
+      </div>
+      <div class="detail-container">
+        <span>Created: </span>
+        <span>{{ details?.created }}</span>
+      </div>
+      <div class="detail-container">
+        <span>Edited: </span>
+        <span>{{ details?.edited }}</span>
+      </div>
+      <div class="detail-container">
+        <span>Birth Year: </span>
+        <span>{{ details?.birth_year }}</span>
+      </div>
+      <div class="detail-container">
+        <span>Eye Color: </span>
+        <span>{{ details?.eye_color }}</span>
+      </div>
+      <div class="detail-container">
+        <span>Hair Color: </span>
+        <span>{{ details?.hair_color }}</span>
+      </div>
+      <div class="detail-container">
+        <span>Skin Color: </span>
+        <span>{{ details?.skin_color }}</span>
+      </div>
+      <div class="detail-container">
+        <span>Gender: </span>
+        <span>{{ details?.gender }}</span>
+      </div>
+      <div class="detail-container">
+        <span>Height: </span>
+        <span>{{ details?.height }}</span>
+      </div>
+      <div class="detail-container">
+        <span>Mass: </span>
+        <span>{{ details?.mass }}</span>
+      </div>
+      <div class="detail-container">
+        <span>Home World: </span>
+        <button mat-stroked-button (click)="openHomeClick(this.planetId)">{{ details?.homeworld }}</button>
+      </div>
+      <button class="back-button" mat-stroked-button routerLink="/characters">Back</button>
+    }
     <div class="loading">
       @if (isApploading) {
         <mat-spinner></mat-spinner>
       }
     </div>
-    <button class="back-button" mat-stroked-button routerLink="/characters">Back</button>
   </div>
-}
+    <!--    TODO should be a button-->
+    <!--  TODO in case you are using "a" tage please use cursor: pointer -->

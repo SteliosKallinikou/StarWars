@@ -1,45 +1,40 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { map } from 'rxjs';
-import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
+import { map, Observable, tap } from 'rxjs';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PlanetProperties } from '../../shared/models';
 import { MatButton } from '@angular/material/button';
-import { Location } from '@angular/common';
+import { AsyncPipe, Location } from '@angular/common';
 import { StarWarsService } from '../../core/service';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-planet-details',
   standalone: true,
-  imports: [RouterOutlet, MatButton, RouterLink],
+  imports: [MatButton, AsyncPipe, MatProgressSpinner, RouterLink],
   templateUrl: './planet-details.component.html',
   styleUrl: './planet-details.component.scss',
 })
 export class PlanetDetailsComponent implements OnInit {
   starWarsService = inject(StarWarsService);
-  //TODO should be better naming for properties p_id -> planetId or id
-  p_id: string | undefined;
+  planetId: string | undefined;
   route: ActivatedRoute = inject(ActivatedRoute);
-  planetDetails: PlanetProperties | undefined;
-  prevUrl: string = this.starWarsService.getPrevUrl();
+  planetDetails$: Observable<PlanetProperties>;
+  isApploading = false;
 
   constructor(private location: Location) {}
 
-  // TODO missing type void
-  ngOnInit() {
-    this.p_id = this.route.snapshot.params['id'];
-    // TODO missing Unsubscribe
-    // TODO could be $planetDetails observable and async pipe in template
-    this.starWarsService
-      .getPlanetDetails(this.p_id)
-      .pipe(map(properties => properties.result))
-      .subscribe({
-        next: data => {
-          this.planetDetails = data.properties;
-        },
-      });
+  ngOnInit(): void {
+    this.isApploading = true;
+    this.planetId = this.route.snapshot.params['id'];
+    this.planetDetails$ = this.starWarsService.getPlanetDetails(this.planetId).pipe(
+      map(properties => properties.result.properties),
+      tap(() => {
+        this.isApploading = false;
+      })
+    );
   }
 
-  // TODO missing type void
-  goBack() {
+  goBack(): void {
     this.location.back();
   }
 }

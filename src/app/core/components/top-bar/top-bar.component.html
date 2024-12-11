@@ -1,7 +1,6 @@
-<!-- TODO -->
+
 <nav class="items-container" mat-tab-nav-bar [tabPanel]="tabPanel">
   <div class="items">
-    <!--    TODO I don't think we need a <label></label>-->
     <a mat-tab-link [routerLink]="'/' + RouterLinks.CHARACTERS" routerLinkActive>
       Star Wars Characters
     </a>
@@ -11,8 +10,6 @@
 </nav>
 
 <div>
-  <!--TODO-->
-  <!-- tabpanel should be camel case tabPanel -->
   <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
   <router-outlet />
 </div>

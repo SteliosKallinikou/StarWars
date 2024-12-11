@@ -1,25 +1,32 @@
 <h1>Star Wars Characters</h1>
 <div class="wrap">
   <div class="container">
-    @for (person of people; track person.uid) {
+    @for (character of characters; track character.uid) {
       <app-item-card
-        [id]="person?.uid"
-        [displayName]="person?.name"
+        [id]="character?.uid"
+        [displayName]="character?.name"
         [navigateTo]="RouterLinks.CHARACTERS"
       ></app-item-card>
     }
   </div>
   <div class="load-more">
-    @if (!this.starWarsService.getUserLimit()) {
+    @if (!isApploading && isLoadMoreAvailable) {
       <button class="load" mat-stroked-button (click)="LoadMore()">Load More Characters</button>
-    } @else {
-      <label>You Have Reached The Maximum StarWars Characters that are available</label>
     }
-  </div>
 
-  <div class="loading">
     @if (isApploading) {
-      <mat-spinner></mat-spinner>
+      <div class="loading">
+        <mat-spinner></mat-spinner>
+      </div>
     }
   </div>
 </div>
+
+
+
+
+
+
+
+
+

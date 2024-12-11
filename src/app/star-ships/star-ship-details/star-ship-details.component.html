@@ -1,34 +1,84 @@
-<!--TODO spacing and formatting -->
-<!-- also you could wrap all inside if block in case shipDetails undefined -->
-<!-- example  @if (shipDetails$ | async; as shipDetails) {...} -->
-<h1>{{ shipDetails?.model }}</h1>
-
-<!--TODO styles could be improved as in details-card component-->
 <div class="wrapper">
-  <span>Model: {{ shipDetails?.model }}</span>
-  <span>Manufacturer: {{ shipDetails?.manufacturer }}</span>
-  <span>Cost in Credits: {{ shipDetails?.cost_in_credits }}</span>
-  <span>Cargo Capacity: {{ shipDetails?.cargo_capacity }}</span>
-  <span>Length: {{ shipDetails?.length }}</span>
-  <span>Class: {{ shipDetails?.starship_class }}</span>
-  <span>HyperDrive Rating: {{ shipDetails?.hyperdrive_rating }}</span>
-  <span>Max atmospheric Speed: {{ shipDetails?.max_atmosphering_speed }}</span>
-  <span>MGLT: {{ shipDetails?.MGLT }}</span>
-  <span>Consumables: {{ shipDetails?.consumables }}</span>
-  <span>Passengers: {{ shipDetails?.passengers }}</span>
-  <span>Pilots:</span>
-  <!-- TODO unnecessary !=0 could be @if (pilot?.length) { -->
-  @if (pilot.length !== 0) {
-    <!-- TODO names are identical pilot of pilot req change -> pilot of pilots -->
-    @for (pilot of pilot; track $index) {
-      <!-- TODO unnecessary Pilot[$index] -->
-      <app-character-details [uid]="pilot"></app-character-details>
-    }
-  }
-  <span>Crew: {{ shipDetails?.crew }}</span>
-  <span>Created: {{ shipDetails?.created }}</span>
-  <span>Edited: {{ shipDetails?.edited }}</span>
+  @if (shipDetails$ | async; as details){
+    <h1>{{ details.name }}</h1>
 
-  <button mat-stroked-button routerLink="/characters">Go to Home Page</button>
-  <button mat-stroked-button routerLink="/starships">Go to StarShips Page</button>
+    <div class="detail-container">
+      <span>Name: </span>
+      <span>{{ details?.name }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Created: </span>
+      <span>{{ details?.model }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Edited: </span>
+      <span>{{ details?.created }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Birth Year: </span>
+      <span>{{ details?.edited }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Eye Color: </span>
+      <span>{{ details?.crew }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Hair Color: </span>
+      <span>{{ details?.cargo_capacity }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Skin Color: </span>
+      <span>{{ details?.consumables }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Gender: </span>
+      <span>{{ details?.cost_in_credits }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Height: </span>
+      <span>{{ details?.hyperdrive_rating }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Mass: </span>
+      <span>{{ details?.length }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Mass: </span>
+      <span>{{ details?.manufacturer }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Mass: </span>
+      <span>{{ details?.max_atmosphering_speed }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Mass: </span>
+      <span>{{ details?.MGLT }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Mass: </span>
+      <span>{{ details?.passengers }}</span>
+    </div>
+    <div class="detail-container">
+      <span>Mass: </span>
+      <span>{{ details?.starship_class }}</span>
+    </div>
+    @if (pilots.length!==0)
+    {
+      @for (pilot of pilots; track $index) {
+        <app-character-details [uid]="pilot"></app-character-details>
+      }
+    } @else {
+      <div class="detail-container">
+        <span>Mass: </span>
+        <span>No Pilots Found</span>
+      </div>
+    }
+    <button mat-stroked-button routerLink="/characters">Go to Home Page</button>
+    <button class="back-button" mat-stroked-button routerLink="/star-ships">Back to StarShips</button>
+  }
+  <div class="loading">
+    @if (isApploading) {
+      <mat-spinner></mat-spinner>
+    }
+  </div>
 </div>
