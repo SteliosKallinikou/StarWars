@@ -11,6 +11,5 @@ import { RouterLinks } from '../../../shared/enums';
   styleUrl: './top-bar.component.scss',
 })
 export class TopBarComponent {
-  protected readonly RouterLink = RouterLink;
   protected readonly RouterLinks = RouterLinks;
 }

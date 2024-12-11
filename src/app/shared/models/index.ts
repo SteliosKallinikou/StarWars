@@ -1,3 +1,3 @@
-export * from './star-wars/user-response';
-export * from './star-wars/properties';
-export * from './star-wars/users-result';
+export * from './star-wars/response';
+export * from './star-wars/details';
+export * from './app-store';

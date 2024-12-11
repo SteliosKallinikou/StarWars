@@ -1,12 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { map } from 'rxjs';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+
 import { MatButton } from '@angular/material/button';
-import { Router } from '@angular/router';
+
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { StarWarsService } from '../core/service';
 import { PlanetResult } from '../shared/models';
 import { RouterLinks } from '../shared/enums';
 import { ItemCardComponent } from '../shared/components';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-planets',
@@ -17,23 +18,23 @@ import { ItemCardComponent } from '../shared/components';
 })
 export class PlanetsComponent implements OnInit {
   protected readonly RouterLinks = RouterLinks;
-  starWarsService = inject(StarWarsService);
-  planets: PlanetResult[] = [];
-  //TODO should be camelCase
+  // TODO use camelCase for properties
+  isLoadMoreAvailable = false;
   isApploading = false;
+  starWarsService = inject(StarWarsService);
+  destroyRef = inject(DestroyRef);
+  planets: PlanetResult[] = [];
 
-  constructor(private router: Router) {}
-
-  // TODO missing type void
-  ngOnInit() {
-    // TODO missing Unsubscribe
+  ngOnInit(): void {
     this.isApploading = true;
+    // TODO missing Unsubscribe
     this.starWarsService
       .getPlanets()
-      .pipe(map(result => result.results))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: data => {
-          this.planets = data;
+          this.isLoadMoreAvailable = Boolean(data.next);
+          this.planets = data.results;
         },
         complete: () => {
           this.isApploading = false;
@@ -41,20 +42,17 @@ export class PlanetsComponent implements OnInit {
       });
   }
 
-  // // TODO missing type void, camelCase and naming should be better -> onDetailsClick
-  // Details(id: string) {
-  //   this.router.navigate(['/' + RouterLinks.PLANETS, id]);
-  // }
-
-  // TODO missing type void, and camelCase
-  LoadMore() {
+  // TODO type void
+  LoadMore(): void {
     // TODO missing Unsubscribe
-    this.starWarsService.getMorePlanets().subscribe({
-      next: data => {
-        for (let i = 0; i < data.results.length; i++) {
-          this.planets.push(data.results[i]);
-        }
-      },
-    });
+    this.starWarsService
+      .getMorePlanets()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: data => {
+          this.planets = data.results;
+          this.isLoadMoreAvailable = Boolean(data.next);
+        },
+      });
   }
 }

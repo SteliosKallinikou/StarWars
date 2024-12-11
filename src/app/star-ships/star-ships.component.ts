@@ -1,12 +1,12 @@
 // TODO formatting and spacing
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { StarWarsService } from '../core/service';
 import { ShipResult } from '../shared/models';
-import { map } from 'rxjs';
 import { MatButton } from '@angular/material/button';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { RouterLinks } from '../shared/enums';
 import { ItemCardComponent } from '../shared/components';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-star-ships',
@@ -17,49 +17,41 @@ import { ItemCardComponent } from '../shared/components';
 })
 export class StarShipsComponent implements OnInit {
   protected readonly RouterLinks = RouterLinks;
-  starWarsService = inject(StarWarsService);
-  starShips: ShipResult[] = [];
   // TODO use camelCase for properties
-  isAppLoading = false;
+  isLoadMoreAvailable = false;
+  isApploading = false;
+  starWarsService = inject(StarWarsService);
+  destroyRef = inject(DestroyRef);
+  starShips: ShipResult[] = [];
 
-  // TODO missing type void
-  ngOnInit() {
-    // TODO do not forget to unsubscribe and ; at the end of the line
-    // TODO missing unsubscription
-    this.isAppLoading = true;
+  ngOnInit(): void {
+    this.isApploading = true;
+    // TODO missing Unsubscribe
     this.starWarsService
       .getShips()
-      .pipe(map(result => result.results))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: data => {
-          this.starShips = data;
+          this.isLoadMoreAvailable = Boolean(data.next);
+          this.starShips = data.results;
         },
         complete: () => {
-          this.isAppLoading = false;
+          this.isApploading = false;
         },
       });
   }
 
-  // // TODO missing type void
-  // ShowDetails(id: string) {
-  //   this.router.navigate(['/' + RouterLinks.STAR_SHIPS, id]);
-  // }
-
-  // TODO missing type void
-  LoadMore() {
-    // TODO missing unsubscription
-    // also we may improve it if we will use BehaviorSubject and store all data in one place
-    this.starWarsService.getMoreStarShips().subscribe({
-      // TODO could be simplified just raw example
-      //   this.starWarsService.getMoreStarShips().pipe(
-      //   map(data => data.results),
-      //   map(results => this.starships.push(...results))
-      //   ).subscribe();
-      next: data => {
-        for (let i = 0; i < data.results.length; i++) {
-          this.starShips.push(data.results[i]);
-        }
-      },
-    });
+  // TODO type void
+  LoadMore(): void {
+    // TODO missing Unsubscribe
+    this.starWarsService
+      .getMoreStarShips()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: data => {
+          this.starShips = data.results;
+          this.isLoadMoreAvailable = Boolean(data.next);
+        },
+      });
   }
 }
