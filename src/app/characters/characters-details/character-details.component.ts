@@ -16,33 +16,30 @@ import { RouterLinks } from '../../shared/enums';
   styleUrl: './character-details.component.scss',
 })
 export class CharacterDetailsComponent implements OnInit {
-  uid = input<string>();
+  id = input<string>();
   starWarsService = inject(StarWarsService);
-  // TODO use camelCase for properties, and better name
   planetId: string | undefined;
-  // TODO use camelCase for properties
-  isApploading = false;
+  isAppLoading = false;
 
+  //TODO maybe we could have better name characterDetails$
   details$: Observable<CharacterProperties>;
 
-  // TODO constructor should be at the top before ngOnInit / all methods
+  // TODO lets inject router as  starWarsService = inject(StarWarsService);
+  // To have consistent code style in this case we could remove constructor()
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    //TODO we can implement global loading spinner to simplify it
-    this.isApploading = true;
-    // TODO missing Unsubscribe
-    this.details$ = this.starWarsService.getCharacterDetails(this.uid()).pipe(
+    this.isAppLoading = true;
+    this.details$ = this.starWarsService.getCharacterDetails(this.id()).pipe(
       map(properties => properties.result.properties),
       tap(details => {
-        this.isApploading = false;
+        this.isAppLoading = false;
         details?.homeworld.match(/(\d+)$/).map(element => (this.planetId = element));
       })
     );
   }
 
-  // TODO use camelCase for methods -> openHome or better name onHomeClick
-  openHomeClick(id: string | undefined): void {
+  onHomeClick(id: string | undefined): void {
     this.router.navigate(['/' + RouterLinks.PLANETS, id]);
   }
 }

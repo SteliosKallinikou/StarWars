@@ -18,7 +18,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class PlanetsComponent implements OnInit {
   protected readonly RouterLinks = RouterLinks;
-  // TODO use camelCase for properties
+  // TODO use camelCase for isApploading
   isLoadMoreAvailable = false;
   isApploading = false;
   starWarsService = inject(StarWarsService);
@@ -27,7 +27,6 @@ export class PlanetsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isApploading = true;
-    // TODO missing Unsubscribe
     this.starWarsService
       .getPlanets()
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -42,9 +41,7 @@ export class PlanetsComponent implements OnInit {
       });
   }
 
-  // TODO type void
   LoadMore(): void {
-    // TODO missing Unsubscribe
     this.starWarsService
       .getMorePlanets()
       .pipe(takeUntilDestroyed(this.destroyRef))

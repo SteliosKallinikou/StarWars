@@ -65,7 +65,7 @@
     @if (pilots.length!==0)
     {
       @for (pilot of pilots; track $index) {
-        <app-character-details [uid]="pilot"></app-character-details>
+        <app-character-details [id]="pilot"></app-character-details>
       }
     } @else {
       <div class="detail-container">

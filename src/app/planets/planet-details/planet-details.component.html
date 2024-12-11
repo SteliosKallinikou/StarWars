@@ -2,6 +2,8 @@
   @if (planetDetails$ | async; as details){
     <h1>{{ details.name }}</h1>
     <div class="detail-container">
+      <!--   TODO I thin it would not be nice for a user to see -> Name: undefined  -->
+      <!--   TODO lets add a default value  details?.name || '' or something like that  -->
       <span>Name: </span>
       <span>{{ details?.name }}</span>
     </div>

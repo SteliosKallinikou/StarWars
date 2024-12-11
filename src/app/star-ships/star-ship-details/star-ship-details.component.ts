@@ -21,10 +21,12 @@ export class StarShipDetailsComponent implements OnInit {
   shipId: string | undefined;
   shipDetails$: Observable<ShipProperties> | undefined;
   pilots: string[] = [];
+  // TODO camelCase for isApploading
   isApploading = false;
 
   ngOnInit(): void {
     this.isApploading = true;
+    //TODO we can use input like   id = input<string>();
     this.shipId = this.route.snapshot.params['id'];
     this.shipDetails$ = this.starWarsService.getShipDetails(this.shipId).pipe(
       map(property => property.result.properties),
@@ -35,6 +37,10 @@ export class StarShipDetailsComponent implements OnInit {
             result?.pilots[i].match(/(\d+)$/).map(element => (this.pilots[i] = element));
           }
         }
+        //TODO could be simplified
+        // if (result?.pilots.length) {
+        //   this.pilots = result.pilots.map(pilot => pilot.match(/(\d+)$/)?.[0] || '');
+        // }
       })
     );
   }
