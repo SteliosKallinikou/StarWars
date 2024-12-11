@@ -1,5 +1,5 @@
 <div class="wrapper">
-  @if (planetDetails$ | async; as details){
+  @if (planetDetails$ | async; as details) {
     <h1>{{ details.name }}</h1>
     <div class="detail-container">
       <!--   TODO I thin it would not be nice for a user to see -> Name: undefined  -->
@@ -43,8 +43,10 @@
       <span>Mass: </span>
       <span>{{ details?.surface_water }}</span>
     </div>
-      <button mat-stroked-button routerLink="/characters">Go to Home Page</button>
-      <button class="back-button" mat-stroked-button (click)="goBack()">Back to Characters or Planet</button>
+    <button mat-stroked-button routerLink="/characters">Go to Home Page</button>
+    <button class="back-button" mat-stroked-button (click)="goBack()">
+      Back to Characters or Planet
+    </button>
   }
   <div class="loading">
     @if (isApploading) {
@@ -52,5 +54,3 @@
     }
   </div>
 </div>
-
-
