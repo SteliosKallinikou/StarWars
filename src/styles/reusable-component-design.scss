@@ -1,5 +1,7 @@
 //TODO h1 should have more specific selector like .title also spacing between selectors
-h1 {
+@use 'variables';
+
+.title{
   text-align: center;
 }
 
@@ -7,13 +9,13 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 24px 12px;
+  gap: variables.$medium-plus variables.$small-plus;
 }
 
 .load-more {
   display: flex;
   align-items: center;
-  margin: 24px 0;
+  margin: variables.$medium-plus 0;
 }
 
 .wrap {
@@ -28,5 +30,5 @@ h1 {
 label {
   border: 1px solid grey;
   border-radius: 100px;
-  padding: 10px;
+  padding: variables.$small-plus;
 }

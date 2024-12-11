@@ -1,47 +1,45 @@
 <div class="wrapper">
-  @if (details$ | async; as details) {
-    <h1>{{ details.name }}</h1>
+  @if (CharacterDetails$ | async; as details) {
+    <h1 class="title">{{ details.name || "Not Found"}}</h1>
     <div class="detail-container">
-      <!--   TODO I thin it would not be nice for a user to see -> Name: undefined  -->
-      <!--   TODO lets add a default value  details?.name || '' or something like that  -->
       <span>Name: </span>
-      <span>{{ details?.name }}</span>
+      <span>{{ details?.name || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Created: </span>
-      <span>{{ details?.created }}</span>
+      <span>{{ details?.created || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Edited: </span>
-      <span>{{ details?.edited }}</span>
+      <span>{{ details?.edited || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Birth Year: </span>
-      <span>{{ details?.birth_year }}</span>
+      <span>{{ details?.birth_year || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Eye Color: </span>
-      <span>{{ details?.eye_color }}</span>
+      <span>{{ details?.eye_color || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Hair Color: </span>
-      <span>{{ details?.hair_color }}</span>
+      <span>{{ details?.hair_color || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Skin Color: </span>
-      <span>{{ details?.skin_color }}</span>
+      <span>{{ details?.skin_color || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Gender: </span>
-      <span>{{ details?.gender }}</span>
+      <span>{{ details?.gender || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Height: </span>
-      <span>{{ details?.height }}</span>
+      <span>{{ details?.height || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Mass: </span>
-      <span>{{ details?.mass }}</span>
+      <span>{{ details?.mass || "Not Found" }}</span>
     </div>
     <div class="detail-container">
       <span>Home World: </span>

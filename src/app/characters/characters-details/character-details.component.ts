@@ -18,19 +18,14 @@ import { RouterLinks } from '../../shared/enums';
 export class CharacterDetailsComponent implements OnInit {
   id = input<string>();
   starWarsService = inject(StarWarsService);
+  router = inject(Router);
   planetId: string | undefined;
   isAppLoading = false;
-
-  //TODO maybe we could have better name characterDetails$
-  details$: Observable<CharacterProperties>;
-
-  // TODO lets inject router as  starWarsService = inject(StarWarsService);
-  // To have consistent code style in this case we could remove constructor()
-  constructor(private router: Router) {}
+  CharacterDetails$: Observable<CharacterProperties>;
 
   ngOnInit(): void {
     this.isAppLoading = true;
-    this.details$ = this.starWarsService.getCharacterDetails(this.id()).pipe(
+    this.CharacterDetails$ = this.starWarsService.getCharacterDetails(this.id()).pipe(
       map(properties => properties.result.properties),
       tap(details => {
         this.isAppLoading = false;

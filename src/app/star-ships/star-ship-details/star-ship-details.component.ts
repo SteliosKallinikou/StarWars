@@ -1,6 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { ShipProperties } from '../../shared/models';
 import { StarWarsService } from '../../core/service';
@@ -17,30 +17,20 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 })
 export class StarShipDetailsComponent implements OnInit {
   starWarsService = inject(StarWarsService);
-  route: ActivatedRoute = inject(ActivatedRoute);
-  shipId: string | undefined;
+  id = input<string>();
   shipDetails$: Observable<ShipProperties> | undefined;
   pilots: string[] = [];
-  // TODO camelCase for isApploading
-  isApploading = false;
+  isAppLoading = false;
 
   ngOnInit(): void {
-    this.isApploading = true;
-    //TODO we can use input like   id = input<string>();
-    this.shipId = this.route.snapshot.params['id'];
-    this.shipDetails$ = this.starWarsService.getShipDetails(this.shipId).pipe(
+    this.isAppLoading = true;
+    this.shipDetails$ = this.starWarsService.getShipDetails(this.id()).pipe(
       map(property => property.result.properties),
       tap(result => {
-        this.isApploading = false;
-        if (result?.pilots.length != 0) {
-          for (let i = 0; i < result?.pilots.length; i++) {
-            result?.pilots[i].match(/(\d+)$/).map(element => (this.pilots[i] = element));
-          }
+        this.isAppLoading = false;
+        if (result?.pilots.length) {
+          this.pilots = result.pilots.map(pilot => pilot.match(/(\d+)$/)?.[0] || ' ');
         }
-        //TODO could be simplified
-        // if (result?.pilots.length) {
-        //   this.pilots = result.pilots.map(pilot => pilot.match(/(\d+)$/)?.[0] || '');
-        // }
       })
     );
   }

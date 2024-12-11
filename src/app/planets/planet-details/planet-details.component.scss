@@ -3,13 +3,10 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  padding: variables.$padding;
+  padding: variables.$medium-plus;
   // TODO could be replaced with variables
-  gap: 10px;
+  gap: variables.$small-plus;
   text-align: center;
 }
 
 // TODO more specific selector like .title
-h1 {
-  text-align: center;
-}
