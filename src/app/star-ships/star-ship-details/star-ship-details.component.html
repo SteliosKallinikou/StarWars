@@ -1,5 +1,5 @@
 <div class="wrapper">
-  @if (shipDetails$ | async; as details){
+  @if (shipDetails$ | async; as details) {
     <h1>{{ details.name }}</h1>
 
     <div class="detail-container">
@@ -62,8 +62,7 @@
       <span>Mass: </span>
       <span>{{ details?.starship_class }}</span>
     </div>
-    @if (pilots.length!==0)
-    {
+    @if (pilots.length !== 0) {
       @for (pilot of pilots; track $index) {
         <app-character-details [id]="pilot"></app-character-details>
       }
@@ -74,7 +73,9 @@
       </div>
     }
     <button mat-stroked-button routerLink="/characters">Go to Home Page</button>
-    <button class="back-button" mat-stroked-button routerLink="/star-ships">Back to StarShips</button>
+    <button class="back-button" mat-stroked-button routerLink="/star-ships">
+      Back to StarShips
+    </button>
   }
   <div class="loading">
     @if (isApploading) {
