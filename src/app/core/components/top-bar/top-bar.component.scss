@@ -1,28 +1,17 @@
-// TODO
-// unused css should be removed
-//@use '@angular/material' as mat;
-
-// TODO
-// also better use more specific selectors like
 .items-container {
   .items {
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
-    // TODO
-    // fixed for mobile styles
+
     a {
       width: 200px;
-      // TODO
-      // add width to elements it will prevent content from jumping
       transition: 1s;
-      // TODO
-      // more scss way to write hover
-      // TODO you can override the default material variables
       --mat-tab-header-inactive-label-text-color: yellow;
+
       &:hover {
+        // TODO could be replaced with variables
         font-size: 20pt;
-        // TODO you can override the default material variables
         --mat-tab-header-inactive-hover-label-text-color: yellow;
       }
     }

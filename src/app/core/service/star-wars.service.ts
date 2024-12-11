@@ -15,12 +15,12 @@ import {
   providedIn: 'root',
 })
 export class StarWarsService {
+  private readonly URL = 'https://www.swapi.tech';
+
   http = inject(HttpClient);
   cacheService = inject(CacheService);
-  // TODO Could be -> private readonly URL
-  URL = 'https://www.swapi.tech';
-  //TODO not the best idea use private readonly router:Router here
-  // we previously discussed better approach
+
+  //TODO we don't need empty constructor it could be removed
   constructor() {}
 
   getCharacters(): Observable<CharactersResponse> {

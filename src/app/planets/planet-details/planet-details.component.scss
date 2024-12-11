@@ -4,10 +4,12 @@
   display: flex;
   flex-direction: column;
   padding: variables.$padding;
+  // TODO could be replaced with variables
   gap: 10px;
   text-align: center;
 }
 
+// TODO more specific selector like .title
 h1 {
   text-align: center;
 }

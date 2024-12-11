@@ -19,12 +19,14 @@ export class PlanetDetailsComponent implements OnInit {
   planetId: string | undefined;
   route: ActivatedRoute = inject(ActivatedRoute);
   planetDetails$: Observable<PlanetProperties>;
+  // TODO camelCase for isApploading -> isAppLoading
   isApploading = false;
 
   constructor(private location: Location) {}
 
   ngOnInit(): void {
     this.isApploading = true;
+    //TODO we can use input like   id = input<string>();
     this.planetId = this.route.snapshot.params['id'];
     this.planetDetails$ = this.starWarsService.getPlanetDetails(this.planetId).pipe(
       map(properties => properties.result.properties),

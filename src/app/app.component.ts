@@ -9,7 +9,7 @@ import { TopBarComponent } from './core/components';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  // TODO
+  // TODO HERE
   // wrong type for title property should be string
   // also it cold be removed as it is not used
   title: 'starwars' | undefined;

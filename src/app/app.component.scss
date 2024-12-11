@@ -1,26 +1,8 @@
 @use 'variables';
 
-// TODO
-// Not the best way to apply styles with *
-// it will apply to all the elements in the app, better approach is to use more specific selectors
-// and not apply styles to all the elements
-
-* {
-  height: 100%;
-  width: 100%;
-  // TODO
-  // please add spacing / formatting for better readability in all files
-}
-
 .container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  // TODO
-  // will be better to use scss variables
-  // for example $gap: 24px;
-  // gap: $gap;
-  // you could create a separate file for variables and import it in the main scss file
-  // in case you want to change the value of the variable you can do it in one place
   gap: variables.$medium-plus;
 }

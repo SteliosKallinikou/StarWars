@@ -1,4 +1,3 @@
-// TODO spacing
 import { Routes } from '@angular/router';
 import { CharactersComponent } from './characters/characters.component';
 import { PlanetsComponent } from './planets/planets.component';
@@ -17,7 +16,7 @@ export const routes: Routes = [
         component: CharactersComponent,
       },
       {
-        path: ':uid',
+        path: ':id',
         component: CharacterDetailsComponent,
       },
     ],
