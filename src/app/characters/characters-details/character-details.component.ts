@@ -7,6 +7,7 @@ import { MatButton } from '@angular/material/button';
 import { AsyncPipe } from '@angular/common';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { RouterLinks } from '../../shared/enums';
+import { DEFAULT_NOT_FOUND } from '../../shared/consts';
 
 @Component({
   selector: 'app-character-details',
@@ -16,9 +17,13 @@ import { RouterLinks } from '../../shared/enums';
   styleUrl: './character-details.component.scss',
 })
 export class CharacterDetailsComponent implements OnInit {
+  protected readonly DEFAULT_NOT_FOUND = DEFAULT_NOT_FOUND;
+
+  private readonly starWarsService = inject(StarWarsService);
+  private readonly router = inject(Router);
+
   id = input<string>();
-  starWarsService = inject(StarWarsService);
-  router = inject(Router);
+
   planetId: string | undefined;
   isAppLoading = false;
   CharacterDetails$: Observable<CharacterProperties>;

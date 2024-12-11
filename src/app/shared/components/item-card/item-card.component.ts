@@ -10,7 +10,6 @@ import { Router, RouterLinkActive } from '@angular/router';
   imports: [MatButton, RouterLinkActive],
 })
 export class ItemCardComponent {
-  protected readonly length = length;
   private readonly router = inject(Router);
 
   id = input.required<string>();

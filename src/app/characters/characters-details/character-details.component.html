@@ -1,49 +1,48 @@
 <div class="wrapper">
   @if (CharacterDetails$ | async; as details) {
-    <h1 class="title">{{ details.name || "Not Found"}}</h1>
+    <h1 class="title">{{ details.name || DEFAULT_NOT_FOUND }}</h1>
     <div class="detail-container">
       <span>Name: </span>
-      <span>{{ details?.name || "Not Found" }}</span>
+      <span>{{ details?.name || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Created: </span>
-      <span>{{ details?.created || "Not Found" }}</span>
+      <span>{{ details?.created || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Edited: </span>
-      <span>{{ details?.edited || "Not Found" }}</span>
+      <span>{{ details?.edited || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Birth Year: </span>
-      <span>{{ details?.birth_year || "Not Found" }}</span>
+      <span>{{ details?.birth_year || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Eye Color: </span>
-      <span>{{ details?.eye_color || "Not Found" }}</span>
+      <span>{{ details?.eye_color || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Hair Color: </span>
-      <span>{{ details?.hair_color || "Not Found" }}</span>
+      <span>{{ details?.hair_color || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Skin Color: </span>
-      <span>{{ details?.skin_color || "Not Found" }}</span>
+      <span>{{ details?.skin_color || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Gender: </span>
-      <span>{{ details?.gender || "Not Found" }}</span>
+      <span>{{ details?.gender || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Height: </span>
-      <span>{{ details?.height || "Not Found" }}</span>
+      <span>{{ details?.height || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Mass: </span>
-      <span>{{ details?.mass || "Not Found" }}</span>
+      <span>{{ details?.mass || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Home World: </span>
-      <!-- TODO no need this.planetId could be just planetId-->
       <button mat-stroked-button (click)="onHomeClick(planetId)">{{ details?.homeworld }}</button>
     </div>
     <button class="back-button" mat-stroked-button routerLink="/characters">Back</button>

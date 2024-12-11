@@ -7,6 +7,7 @@ import { StarWarsService } from '../../core/service';
 import { CharacterDetailsComponent } from '../../characters/characters-details/character-details.component';
 import { AsyncPipe } from '@angular/common';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { DEFAULT_EMPTY } from '../../shared/consts';
 
 @Component({
   selector: 'app-star-ship-details',
@@ -16,8 +17,12 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
   styleUrl: './star-ship-details.component.scss',
 })
 export class StarShipDetailsComponent implements OnInit {
-  starWarsService = inject(StarWarsService);
+  protected readonly DEFAULT_EMPTY = DEFAULT_EMPTY;
+
+  private readonly starWarsService = inject(StarWarsService);
+
   id = input<string>();
+
   shipDetails$: Observable<ShipProperties> | undefined;
   pilots: string[] = [];
   isAppLoading = false;

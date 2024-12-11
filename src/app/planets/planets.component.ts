@@ -18,10 +18,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class PlanetsComponent implements OnInit {
   protected readonly RouterLinks = RouterLinks;
+
+  private readonly starWarsService = inject(StarWarsService);
+  private readonly destroyRef = inject(DestroyRef);
+
   isLoadMoreAvailable = false;
   isAppLoading = false;
-  starWarsService = inject(StarWarsService);
-  destroyRef = inject(DestroyRef);
   planets: PlanetResult[] = [];
 
   ngOnInit(): void {

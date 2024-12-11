@@ -4,9 +4,6 @@
   display: flex;
   flex-direction: column;
   padding: variables.$medium-plus;
-  // TODO could be replaced with variables
   gap: variables.$small-plus;
   text-align: center;
 }
-
-// TODO more specific selector like .title

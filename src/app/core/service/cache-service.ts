@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DEFAULT_CACHE } from '../../shared/consts/default-cache';
+import { DEFAULT_CACHE } from '../../shared/consts';
 import { AppStore } from '../../shared/models';
 
 @Injectable({

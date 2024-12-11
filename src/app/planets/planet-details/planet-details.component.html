@@ -2,46 +2,44 @@
   @if (planetDetails$ | async; as details) {
     <h1 class="title">{{ details.name }}</h1>
     <div class="detail-container">
-      <!--   TODO I thin it would not be nice for a user to see -> Name: undefined  -->
-      <!--   TODO lets add a default value  details?.name || '' or something like that  -->
       <span>Name: </span>
-      <span>{{ details?.name || "Not Found" }}</span>
+      <span>{{ details?.name || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Created: </span>
-      <span>{{ details?.created || "Not Found" }}</span>
+      <span>{{ details?.created || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Edited: </span>
-      <span>{{ details?.edited || "Not Found" }}</span>
+      <span>{{ details?.edited || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Birth Year: </span>
-      <span>{{ details?.climate || "Not Found" }}</span>
+      <span>{{ details?.climate || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Eye Color: </span>
-      <span>{{ details?.diameter || "Not Found" }}</span>
+      <span>{{ details?.diameter || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Hair Color: </span>
-      <span>{{ details?.gravity || "Not Found" }}</span>
+      <span>{{ details?.gravity || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Skin Color: </span>
-      <span>{{ details?.orbital_period || "Not Found" }}</span>
+      <span>{{ details?.orbital_period || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Gender: </span>
-      <span>{{ details?.population || "Not Found" }}</span>
+      <span>{{ details?.population || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Height: </span>
-      <span>{{ details?.rotation_period || "Not Found" }}</span>
+      <span>{{ details?.rotation_period || DEFAULT_NOT_FOUND }}</span>
     </div>
     <div class="detail-container">
       <span>Mass: </span>
-      <span>{{ details?.surface_water || "Not Found" }}</span>
+      <span>{{ details?.surface_water || DEFAULT_NOT_FOUND }}</span>
     </div>
     <button mat-stroked-button routerLink="/characters">Go to Home Page</button>
     <button class="back-button" mat-stroked-button (click)="goBack()">
