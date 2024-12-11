@@ -1,4 +1,3 @@
-// TODO formatting and spacing
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { StarWarsService } from '../core/service';
 import { ShipResult } from '../shared/models';
@@ -18,10 +17,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class StarShipsComponent implements OnInit {
   protected readonly RouterLinks = RouterLinks;
 
+  private readonly starWarsService = inject(StarWarsService);
+  private readonly destroyRef = inject(DestroyRef);
+
   isLoadMoreAvailable = false;
   isAppLoading = false;
-  starWarsService = inject(StarWarsService);
-  destroyRef = inject(DestroyRef);
   starShips: ShipResult[] = [];
 
   ngOnInit(): void {

@@ -10,11 +10,11 @@
     }
   </div>
   <div class="load-more">
-    @if (!isApploading && isLoadMoreAvailable) {
+    @if (!isAppLoading && isLoadMoreAvailable) {
       <button class="load" mat-stroked-button (click)="LoadMore()">Load More Characters</button>
     }
 
-    @if (isApploading) {
+    @if (isAppLoading) {
       <div class="loading">
         <mat-spinner></mat-spinner>
       </div>

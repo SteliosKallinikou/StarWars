@@ -1,66 +1,66 @@
 <div class="wrapper">
   @if (shipDetails$ | async; as details) {
-    <h1 class="title">{{ details.name || " " }}</h1>
+    <h1 class="title">{{ details.name || DEFAULT_EMPTY }}</h1>
 
     <div class="detail-container">
       <span>Name: </span>
-      <span>{{ details?.name || " " }}</span>
+      <span>{{ details?.name || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Model: </span>
-      <span>{{ details?.model || " " }}</span>
+      <span>{{ details?.model || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Created: </span>
-      <span>{{ details?.created || " " }}</span>
+      <span>{{ details?.created || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Edited: </span>
-      <span>{{ details?.edited || " "}}</span>
+      <span>{{ details?.edited || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Crew: </span>
-      <span>{{ details?.crew || " " }}</span>
+      <span>{{ details?.crew || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Cargo Capacity: </span>
-      <span>{{ details?.cargo_capacity || " " }}</span>
+      <span>{{ details?.cargo_capacity || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Consumables: </span>
-      <span>{{ details?.consumables || " " }}</span>
+      <span>{{ details?.consumables || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Const In Credits: </span>
-      <span>{{ details?.cost_in_credits || " " }}</span>
+      <span>{{ details?.cost_in_credits || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
-      <span>Hyperdrive Rating: </span>
-      <span>{{ details?.hyperdrive_rating || " " }}</span>
+      <span>Hyper drive Rating: </span>
+      <span>{{ details?.hyperdrive_rating || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Length: </span>
-      <span>{{ details?.length || " " }}</span>
+      <span>{{ details?.length || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Manufacturer: </span>
-      <span>{{ details?.manufacturer || " " }}</span>
+      <span>{{ details?.manufacturer || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Max Atmospheric Speed: </span>
-      <span>{{ details?.max_atmosphering_speed || " " }}</span>
+      <span>{{ details?.max_atmosphering_speed || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>MGLT: </span>
-      <span>{{ details?.MGLT || " " }}</span>
+      <span>{{ details?.MGLT || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>Passengers: </span>
-      <span>{{ details?.passengers || " " }}</span>
+      <span>{{ details?.passengers || DEFAULT_EMPTY }}</span>
     </div>
     <div class="detail-container">
       <span>StarShip Class: </span>
-      <span>{{ details?.starship_class || " " }}</span>
+      <span>{{ details?.starship_class || DEFAULT_EMPTY }}</span>
     </div>
     @if (pilots.length !== 0) {
       <span>Pilots: </span>

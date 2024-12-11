@@ -16,16 +16,16 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class CharactersComponent implements OnInit {
   protected readonly RouterLinks = RouterLinks;
-  starWarsService = inject(StarWarsService);
-  destroyRef = inject(DestroyRef);
 
-  // TODO use camelCase for isApploading
+  private readonly starWarsService = inject(StarWarsService);
+  private readonly destroyRef = inject(DestroyRef);
+
   isLoadMoreAvailable = false;
-  isApploading = false;
+  isAppLoading = false;
   characters: CharacterResult[];
 
   ngOnInit(): void {
-    this.isApploading = true;
+    this.isAppLoading = true;
     this.starWarsService
       .getCharacters()
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -35,7 +35,7 @@ export class CharactersComponent implements OnInit {
           this.characters = data.results;
         },
         complete: () => {
-          this.isApploading = false;
+          this.isAppLoading = false;
         },
       });
   }

@@ -6,6 +6,7 @@ import { MatButton } from '@angular/material/button';
 import { AsyncPipe, Location } from '@angular/common';
 import { StarWarsService } from '../../core/service';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { DEFAULT_NOT_FOUND } from '../../shared/consts';
 
 @Component({
   selector: 'app-planet-details',
@@ -15,17 +16,18 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
   styleUrl: './planet-details.component.scss',
 })
 export class PlanetDetailsComponent implements OnInit {
-  starWarsService = inject(StarWarsService);
-  location = inject(Location);
+  protected readonly DEFAULT_NOT_FOUND = DEFAULT_NOT_FOUND;
+
+  private readonly starWarsService = inject(StarWarsService);
+  private readonly location = inject(Location);
+
   id = input<string>();
+
   planetDetails$: Observable<PlanetProperties>;
-  // TODO camelCase for isApploading -> isAppLoading
   isAppLoading = false;
 
   ngOnInit(): void {
     this.isAppLoading = true;
-    console.log(this.id());
-    //TODO we can use input like   id = input<string>();
     this.planetDetails$ = this.starWarsService.getPlanetDetails(this.id()).pipe(
       map(properties => properties.result.properties),
       tap(() => {

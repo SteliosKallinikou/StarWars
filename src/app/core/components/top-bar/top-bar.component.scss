@@ -1,3 +1,5 @@
+@use 'variables';
+
 .items-container {
   .items {
     display: flex;
@@ -10,8 +12,7 @@
       --mat-tab-header-inactive-label-text-color: yellow;
 
       &:hover {
-        // TODO could be replaced with variables
-        font-size: 20pt;
+        font-size: variables.$large-font-size;
         --mat-tab-header-inactive-hover-label-text-color: yellow;
       }
     }
